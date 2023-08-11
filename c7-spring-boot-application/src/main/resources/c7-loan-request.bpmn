@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1wyor05" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.12.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.19.0">
+  <bpmn:process id="LoanRequestProcess" name="Loan Request" isExecutable="true" camunda:historyTimeToLive="5">
+    <bpmn:startEvent id="StartEvent_LoanRequestReceived" name="Loan Request Received">
+      <bpmn:outgoing>Flow_14d7dpp</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_14d7dpp" sourceRef="StartEvent_LoanRequestReceived" targetRef="ServiceTask_Logger" />
+    <bpmn:endEvent id="EndEvent_LoanRequestProcessed" name="Loan Request Processed">
+      <bpmn:incoming>Flow_1ybsct2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1ybsct2" sourceRef="Task_CheckRequest" targetRef="EndEvent_LoanRequestProcessed" />
+    <bpmn:userTask id="Task_CheckRequest" name="Check Request">
+      <bpmn:incoming>Flow_11xfy3a</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ybsct2</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_11xfy3a" sourceRef="ServiceTask_Logger" targetRef="Task_CheckRequest" />
+    <bpmn:serviceTask id="ServiceTask_Logger" name="Log to console" camunda:delegateExpression="${logger}">
+      <bpmn:incoming>Flow_14d7dpp</bpmn:incoming>
+      <bpmn:outgoing>Flow_11xfy3a</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="LoanRequestProcess">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_LoanRequestReceived">
+        <dc:Bounds x="179" y="79" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="162" y="122" width="70" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_09w7gl8_di" bpmnElement="EndEvent_LoanRequestProcessed">
+        <dc:Bounds x="592" y="79" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="575" y="122" width="70" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_06d5ns2_di" bpmnElement="Task_CheckRequest">
+        <dc:Bounds x="430" y="57" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0e2khli_di" bpmnElement="ServiceTask_Logger">
+        <dc:Bounds x="280" y="57" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_14d7dpp_di" bpmnElement="Flow_14d7dpp">
+        <di:waypoint x="215" y="97" />
+        <di:waypoint x="280" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ybsct2_di" bpmnElement="Flow_1ybsct2">
+        <di:waypoint x="530" y="97" />
+        <di:waypoint x="592" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11xfy3a_di" bpmnElement="Flow_11xfy3a">
+        <di:waypoint x="380" y="97" />
+        <di:waypoint x="430" y="97" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

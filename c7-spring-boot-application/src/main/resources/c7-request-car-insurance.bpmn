@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1jp6anp" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.12.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.19.0">
+  <bpmn:process id="RequestCarInsuranceProcess" name="Request Car Insurance" isExecutable="true" camunda:historyTimeToLive="5">
+    <bpmn:startEvent id="StartEvent_RequestReceived" name="Request Received">
+      <bpmn:outgoing>Flow_0ltazfu</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0ltazfu" sourceRef="StartEvent_RequestReceived" targetRef="Rule_DetermineRisk" />
+    <bpmn:exclusiveGateway id="Gateway_Score" name="Code?">
+      <bpmn:incoming>Flow_0102zeb</bpmn:incoming>
+      <bpmn:outgoing>Flow_red</bpmn:outgoing>
+      <bpmn:outgoing>Flow_yellow</bpmn:outgoing>
+      <bpmn:outgoing>Flow_green</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0102zeb" sourceRef="Rule_DetermineRisk" targetRef="Gateway_Score" />
+    <bpmn:sequenceFlow id="Flow_red" name="red" sourceRef="Gateway_Score" targetRef="Task_HighRisk">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${code=="red"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0xgtsfu" sourceRef="Task_HighRisk" targetRef="Task_RejectRequest" />
+    <bpmn:endEvent id="EndEvent_RequestRejected" name="Request Rejected">
+      <bpmn:incoming>Flow_1rvl8xn</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1rvl8xn" sourceRef="Task_RejectRequest" targetRef="EndEvent_RequestRejected" />
+    <bpmn:sequenceFlow id="Flow_yellow" name="yellow" sourceRef="Gateway_Score" targetRef="Task_DetermineRisk">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${code=="yellow"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_green" name="green" sourceRef="Gateway_Score" targetRef="Task_LowRisk">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${code=="green"}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="Gateway_Decision" name="Decision?">
+      <bpmn:incoming>Flow_041jf77</bpmn:incoming>
+      <bpmn:outgoing>gatewayDecision-rejectRequest</bpmn:outgoing>
+      <bpmn:outgoing>gatewayDecision-approveRequest</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_041jf77" sourceRef="Task_DetermineRisk" targetRef="Gateway_Decision" />
+    <bpmn:sequenceFlow id="gatewayDecision-rejectRequest" name="Rejected" sourceRef="Gateway_Decision" targetRef="Task_RejectRequest">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${approved}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_18hxwn2" sourceRef="Task_LowRisk" targetRef="Task_ApproveRequest" />
+    <bpmn:sequenceFlow id="gatewayDecision-approveRequest" name="Approved" sourceRef="Gateway_Decision" targetRef="Task_ApproveRequest">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!approved}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="EndEvent_RequestApproved" name="Request Approved">
+      <bpmn:incoming>Flow_1u4kuj2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1u4kuj2" sourceRef="Task_ApproveRequest" targetRef="EndEvent_RequestApproved" />
+    <bpmn:manualTask id="Task_HighRisk" name="High Risk">
+      <bpmn:incoming>Flow_red</bpmn:incoming>
+      <bpmn:outgoing>Flow_0xgtsfu</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:userTask id="Task_DetermineRisk" name="Determine Risk" camunda:formRef="Form_DetermineRisk" camunda:formRefBinding="latest">
+      <bpmn:incoming>Flow_yellow</bpmn:incoming>
+      <bpmn:outgoing>Flow_041jf77</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:businessRuleTask id="Rule_DetermineRisk" name="Determine Risk" camunda:resultVariable="code" camunda:decisionRef="Decision_DetermineRisk" camunda:mapDecisionResult="singleEntry">
+      <bpmn:incoming>Flow_0ltazfu</bpmn:incoming>
+      <bpmn:outgoing>Flow_0102zeb</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:userTask id="Task_RejectRequest" name="Reject Request">
+      <bpmn:incoming>Flow_0xgtsfu</bpmn:incoming>
+      <bpmn:incoming>gatewayDecision-rejectRequest</bpmn:incoming>
+      <bpmn:outgoing>Flow_1rvl8xn</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_ApproveRequest" name="Approve Request">
+      <bpmn:incoming>Flow_18hxwn2</bpmn:incoming>
+      <bpmn:incoming>gatewayDecision-approveRequest</bpmn:incoming>
+      <bpmn:outgoing>Flow_1u4kuj2</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Task_LowRisk" name="Low Risk" camunda:delegateExpression="${toUpperCase}">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_green</bpmn:incoming>
+      <bpmn:outgoing>Flow_18hxwn2</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="RequestCarInsuranceProcess">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_RequestReceived">
+        <dc:Bounds x="179" y="79" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="152" y="122" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0y8w5tx_di" bpmnElement="Gateway_Score" isMarkerVisible="true">
+        <dc:Bounds x="465" y="72" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="474" y="42" width="33" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_18zvtj0_di" bpmnElement="EndEvent_RequestRejected">
+        <dc:Bounds x="1022" y="79" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="997" y="122" width="88" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_08d6eso_di" bpmnElement="Gateway_Decision" isMarkerVisible="true">
+        <dc:Bounds x="865" y="235" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="925" y="253" width="49" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0o8nc49_di" bpmnElement="EndEvent_RequestApproved">
+        <dc:Bounds x="1022" y="412" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1017" y="455" width="47" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0f6ksv3_di" bpmnElement="Task_HighRisk">
+        <dc:Bounds x="630" y="57" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0fkrhre_di" bpmnElement="Task_DetermineRisk">
+        <dc:Bounds x="630" y="220" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_01cjol5_di" bpmnElement="Rule_DetermineRisk">
+        <dc:Bounds x="290" y="57" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0chbsz6_di" bpmnElement="Task_RejectRequest">
+        <dc:Bounds x="840" y="57" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1nllodj_di" bpmnElement="Task_ApproveRequest">
+        <dc:Bounds x="840" y="390" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1l6r26z_di" bpmnElement="Task_LowRisk">
+        <dc:Bounds x="630" y="390" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0ltazfu_di" bpmnElement="Flow_0ltazfu">
+        <di:waypoint x="215" y="97" />
+        <di:waypoint x="290" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0102zeb_di" bpmnElement="Flow_0102zeb">
+        <di:waypoint x="390" y="97" />
+        <di:waypoint x="465" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1lvrkc9_di" bpmnElement="Flow_red">
+        <di:waypoint x="515" y="97" />
+        <di:waypoint x="630" y="97" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="552" y="79" width="16" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0xgtsfu_di" bpmnElement="Flow_0xgtsfu">
+        <di:waypoint x="730" y="97" />
+        <di:waypoint x="840" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rvl8xn_di" bpmnElement="Flow_1rvl8xn">
+        <di:waypoint x="940" y="97" />
+        <di:waypoint x="1022" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1miexfg_di" bpmnElement="Flow_yellow">
+        <di:waypoint x="490" y="122" />
+        <di:waypoint x="490" y="260" />
+        <di:waypoint x="630" y="260" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="544" y="243" width="31" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1o7gyv1_di" bpmnElement="Flow_green">
+        <di:waypoint x="490" y="122" />
+        <di:waypoint x="490" y="430" />
+        <di:waypoint x="630" y="430" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="545" y="403" width="29" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_041jf77_di" bpmnElement="Flow_041jf77">
+        <di:waypoint x="730" y="260" />
+        <di:waypoint x="865" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0gcpjly_di" bpmnElement="gatewayDecision-rejectRequest">
+        <di:waypoint x="890" y="235" />
+        <di:waypoint x="890" y="137" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="898" y="183" width="44" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18hxwn2_di" bpmnElement="Flow_18hxwn2">
+        <di:waypoint x="730" y="430" />
+        <di:waypoint x="840" y="430" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15rhcjy_di" bpmnElement="gatewayDecision-approveRequest">
+        <di:waypoint x="890" y="285" />
+        <di:waypoint x="890" y="390" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="896" y="335" width="47" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1u4kuj2_di" bpmnElement="Flow_1u4kuj2">
+        <di:waypoint x="940" y="430" />
+        <di:waypoint x="1022" y="430" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

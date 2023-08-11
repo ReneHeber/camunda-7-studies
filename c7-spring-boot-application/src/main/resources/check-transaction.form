@@ -1,0 +1,47 @@
+{
+  "components": [
+    {
+      "text": "# Check Transaction",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1i0h3q2",
+        "columns": null
+      },
+      "id": "Field_17g0czq"
+    },
+    {
+      "label": "Item",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0uaz7ex",
+        "columns": null
+      },
+      "id": "Field_121mrla",
+      "key": "item",
+      "readonly": false,
+      "disabled": true
+    },
+    {
+      "label": "Amount",
+      "type": "number",
+      "layout": {
+        "row": "Row_05yil5n",
+        "columns": null
+      },
+      "id": "Field_0b738gl",
+      "key": "amount",
+      "readonly": true,
+      "disabled": false
+    }
+  ],
+  "type": "default",
+  "id": "Form_CheckTransaction",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.12.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 9
+}

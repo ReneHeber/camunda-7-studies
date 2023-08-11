@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0l3zpvw" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.12.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.19.0">
+  <bpmn:process id="GettingJokeProcess" name="Getting Joke" isExecutable="true" camunda:historyTimeToLive="5">
+    <bpmn:startEvent id="StartEvent_JokeNeeded" name="Joke needed">
+      <bpmn:outgoing>Flow_10rgpit</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_10rgpit" sourceRef="StartEvent_JokeNeeded" targetRef="Task_GettingJoke" />
+    <bpmn:endEvent id="EndEvent_JokeReceived" name="Joke received">
+      <bpmn:incoming>Flow_1fwzjwm</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0940kpe" sourceRef="Task_GettingJoke" targetRef="Task_ReadJoke" />
+    <bpmn:sequenceFlow id="Flow_1fwzjwm" sourceRef="Task_ReadJoke" targetRef="EndEvent_JokeReceived" />
+    <bpmn:userTask id="Task_ReadJoke" name="Read Joke" camunda:formRef="read-joke" camunda:formRefBinding="latest">
+      <bpmn:incoming>Flow_0940kpe</bpmn:incoming>
+      <bpmn:outgoing>Flow_1fwzjwm</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Task_GettingJoke" name="Getting Joke" camunda:delegateExpression="${gettingJoke}">
+      <bpmn:incoming>Flow_10rgpit</bpmn:incoming>
+      <bpmn:outgoing>Flow_0940kpe</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="GettingJokeProcess">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_JokeNeeded">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="166" y="142" width="63" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0p8gx0y_di" bpmnElement="Task_GettingJoke">
+        <dc:Bounds x="300" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_17nppy9_di" bpmnElement="EndEvent_JokeReceived">
+        <dc:Bounds x="672" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="657" y="142" width="68" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1omukbw_di" bpmnElement="Task_ReadJoke">
+        <dc:Bounds x="480" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_10rgpit_di" bpmnElement="Flow_10rgpit">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="300" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0940kpe_di" bpmnElement="Flow_0940kpe">
+        <di:waypoint x="400" y="117" />
+        <di:waypoint x="480" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fwzjwm_di" bpmnElement="Flow_1fwzjwm">
+        <di:waypoint x="580" y="117" />
+        <di:waypoint x="672" y="117" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

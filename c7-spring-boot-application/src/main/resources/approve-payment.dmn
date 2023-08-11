@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_ApprovePayment" name="DRD Approve Payment" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.12.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.19.0">
+  <decision id="approve-payment" name="Approve Payment">
+    <decisionTable id="DecisionTable_10tirbi">
+      <input id="Input_1" label="Item">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>item</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0yqb6xb">
+          <text>"book"</text>
+        </inputValues>
+      </input>
+      <output id="Output_1" label="Approved" name="approved" typeRef="boolean" />
+      <rule id="DecisionRule_0p569k0">
+        <inputEntry id="UnaryTests_170gtqz">
+          <text>"book"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19caphs">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10859qv">
+        <inputEntry id="UnaryTests_1wlt9kf">
+          <text>not("book")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09pz2dp">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="approve-payment">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

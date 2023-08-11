@@ -1,0 +1,59 @@
+{
+  "components": [
+    {
+      "text": "# Determine Risk",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_05lmna8",
+        "columns": null
+      },
+      "id": "Field_0oioujo"
+    },
+    {
+      "label": "Car Type",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0bs54c9",
+        "columns": null
+      },
+      "id": "Field_09fic5c",
+      "key": "carType",
+      "disabled": false,
+      "readonly": true
+    },
+    {
+      "label": "Experience",
+      "type": "number",
+      "layout": {
+        "row": "Row_03n65sw",
+        "columns": null
+      },
+      "id": "Field_1i4cubj",
+      "key": "experience",
+      "readonly": true
+    },
+    {
+      "label": "Approved?",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_02eg4zk",
+        "columns": null
+      },
+      "id": "Field_0bnfki0",
+      "key": "approved",
+      "validate": {
+        "required": false
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_DetermineRisk",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.12.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 9
+}

@@ -1,0 +1,35 @@
+{
+  "components": [
+    {
+      "text": "# Chuck Norris Joke",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1b499bw",
+        "columns": null
+      },
+      "id": "Field_0nia9lx"
+    },
+    {
+      "label": "Joke",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0wi49qw",
+        "columns": null
+      },
+      "id": "Field_0hiwfrk",
+      "key": "joke",
+      "readonly": false,
+      "disabled": true
+    }
+  ],
+  "type": "default",
+  "id": "read-joke",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.12.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 9
+}

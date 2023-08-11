@@ -2,16 +2,24 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.camunda.bpmn.getstarted</groupId>
+  <groupId>org.camunda.bpm.getstarted</groupId>
   <artifactId>camunda-7-studies</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
 
   <name>camunda-7-studies</name>
   <url>http://maven.apache.org</url>
+  <modules>
+    <module>c7-spring-boot-application-getstarted</module>
+    <module>c7-charge-card-worker-getstarted</module>
+    <module>c7-spring-boot-app-experiments</module>
+  </modules>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
   </properties>
 
   <dependencies>

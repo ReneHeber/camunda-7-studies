@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1j5ttl7" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.12.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.19.0">
+  <bpmn:process id="ProcessInstanceMigrationProcess" name="Process Instance Migration" isExecutable="true" camunda:historyTimeToLive="5">
+    <bpmn:startEvent id="StartEvent_1" name="Process Instance Migration required" camunda:asyncAfter="true">
+      <bpmn:outgoing>Flow_1uaxz73</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1uaxz73" sourceRef="StartEvent_1" targetRef="ServiceTask_ProcessInstanceMigration" />
+    <bpmn:serviceTask id="ServiceTask_ProcessInstanceMigration" name="Process Instance Migration" camunda:delegateExpression="processInstanceMigrationDelegate">
+      <bpmn:incoming>Flow_1uaxz73</bpmn:incoming>
+      <bpmn:outgoing>Flow_1rg8y0i</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_ProcessInstanceMigrationCompleted" name="Process Instance Migration Completed">
+      <bpmn:incoming>Flow_1rg8y0i</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1rg8y0i" sourceRef="ServiceTask_ProcessInstanceMigration" targetRef="EndEvent_ProcessInstanceMigrationCompleted" />
+    <bpmn:textAnnotation id="TextAnnotation_1eecps1">
+      <bpmn:text>Input:
+processDefinitionKey
+fromVersion
+toVersion</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_04wbwi9" sourceRef="StartEvent_1" targetRef="TextAnnotation_1eecps1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="ProcessInstanceMigrationProcess">
+      <bpmndi:BPMNShape id="TextAnnotation_1eecps1_di" bpmnElement="TextAnnotation_1eecps1">
+        <dc:Bounds x="147" y="80" width="139.99680918953413" height="69.55966815571155" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="219" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="153" y="262" width="89" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0jf2md0_di" bpmnElement="ServiceTask_ProcessInstanceMigration">
+        <dc:Bounds x="290" y="197" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_00b8wuo_di" bpmnElement="EndEvent_ProcessInstanceMigrationCompleted">
+        <dc:Bounds x="542" y="219" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="519" y="262" width="85" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_04wbwi9_di" bpmnElement="Association_04wbwi9">
+        <di:waypoint x="197" y="219" />
+        <di:waypoint x="197" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1uaxz73_di" bpmnElement="Flow_1uaxz73">
+        <di:waypoint x="215" y="237" />
+        <di:waypoint x="290" y="237" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rg8y0i_di" bpmnElement="Flow_1rg8y0i">
+        <di:waypoint x="390" y="237" />
+        <di:waypoint x="542" y="237" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1hxmwk9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.12.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.19.0">
+  <bpmn:process id="SomeInlineScriptingProcess" name="Some Inline Scripting" isExecutable="true" camunda:historyTimeToLive="5">
+    <bpmn:startEvent id="StartEvent_1" name="Start Inline Script" camunda:asyncAfter="true">
+      <bpmn:outgoing>Flow_0i0tj12</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0i0tj12" sourceRef="StartEvent_1" targetRef="Task_SomeScript" />
+    <bpmn:endEvent id="Event_19cd0ot" name="Inline Script Completed">
+      <bpmn:incoming>Flow_08cev3g</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_05dnxs2" sourceRef="Task_SomeScript" targetRef="Task_Waiting" />
+    <bpmn:scriptTask id="Task_SomeScript" name="Some Script" scriptFormat="Java">
+      <bpmn:incoming>Flow_0i0tj12</bpmn:incoming>
+      <bpmn:outgoing>Flow_05dnxs2</bpmn:outgoing>
+      <bpmn:script>execution.getVariable("processDefinitionKey");
+execution.setVariable("output","Traumbaum");</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_08cev3g" sourceRef="Task_Waiting" targetRef="Event_19cd0ot" />
+    <bpmn:userTask id="Task_Waiting" name="Waiting">
+      <bpmn:incoming>Flow_05dnxs2</bpmn:incoming>
+      <bpmn:outgoing>Flow_08cev3g</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="SomeInlineScriptingProcess">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="79" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="155" y="122" width="85" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_09411qi_di" bpmnElement="Task_SomeScript">
+        <dc:Bounds x="300" y="57" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_19cd0ot_di" bpmnElement="Event_19cd0ot">
+        <dc:Bounds x="602" y="79" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="591" y="122" width="59" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_111nxxx_di" bpmnElement="Task_Waiting">
+        <dc:Bounds x="450" y="57" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0i0tj12_di" bpmnElement="Flow_0i0tj12">
+        <di:waypoint x="215" y="97" />
+        <di:waypoint x="300" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05dnxs2_di" bpmnElement="Flow_05dnxs2">
+        <di:waypoint x="400" y="97" />
+        <di:waypoint x="450" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08cev3g_di" bpmnElement="Flow_08cev3g">
+        <di:waypoint x="550" y="97" />
+        <di:waypoint x="602" y="97" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -5,7 +5,7 @@
       <bpmn:outgoing>Flow_1uaxz73</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_1uaxz73" sourceRef="StartEvent_1" targetRef="ServiceTask_ProcessInstanceMigration" />
-    <bpmn:serviceTask id="ServiceTask_ProcessInstanceMigration" name="Process Instance Migration" camunda:delegateExpression="processInstanceMigrationDelegate">
+    <bpmn:serviceTask id="ServiceTask_ProcessInstanceMigration" name="Process Instance Migration" camunda:delegateExpression="${processInstanceMigrationDelegate}">
       <bpmn:incoming>Flow_1uaxz73</bpmn:incoming>
       <bpmn:outgoing>Flow_1rg8y0i</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -23,10 +23,6 @@ toVersion</bpmn:text>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="ProcessInstanceMigrationProcess">
-      <bpmndi:BPMNShape id="TextAnnotation_1eecps1_di" bpmnElement="TextAnnotation_1eecps1">
-        <dc:Bounds x="147" y="80" width="139.99680918953413" height="69.55966815571155" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="219" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -43,10 +39,10 @@ toVersion</bpmn:text>
           <dc:Bounds x="519" y="262" width="85" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Association_04wbwi9_di" bpmnElement="Association_04wbwi9">
-        <di:waypoint x="197" y="219" />
-        <di:waypoint x="197" y="150" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_1eecps1_di" bpmnElement="TextAnnotation_1eecps1">
+        <dc:Bounds x="147" y="80" width="139.99680918953413" height="69.55966815571155" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1uaxz73_di" bpmnElement="Flow_1uaxz73">
         <di:waypoint x="215" y="237" />
         <di:waypoint x="290" y="237" />
@@ -54,6 +50,10 @@ toVersion</bpmn:text>
       <bpmndi:BPMNEdge id="Flow_1rg8y0i_di" bpmnElement="Flow_1rg8y0i">
         <di:waypoint x="390" y="237" />
         <di:waypoint x="542" y="237" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_04wbwi9_di" bpmnElement="Association_04wbwi9">
+        <di:waypoint x="197" y="219" />
+        <di:waypoint x="197" y="150" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

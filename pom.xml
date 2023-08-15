@@ -13,6 +13,7 @@
     <module>c7-spring-boot-application-getstarted</module>
     <module>c7-charge-card-worker-getstarted</module>
     <module>c7-spring-boot-app-experiments</module>
+      <module>c7-spring-boot-app-developers-course</module>
   </modules>
 
   <properties>

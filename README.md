@@ -23,5 +23,10 @@ Camunda 7 study project with processes, DMNs, Java delegates and logger
 # c7-charge-card-worker-getstarted
 External worker for c7-getstarted-application.
 
+# c7-spring-boot-app-developers-course
+Project for developers course from Camunda: https://academy.camunda.com/c7-platform-java
+
 # c7-spring-boot-app-experiments
 Studies after finishing getstarted-project of Camunda Docs.
+
+

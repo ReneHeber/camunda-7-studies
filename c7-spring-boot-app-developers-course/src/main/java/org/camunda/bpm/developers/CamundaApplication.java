@@ -15,9 +15,20 @@ import java.util.Map;
 @EnableProcessApplication
 public class CamundaApplication {
 
+    @Autowired
+    private RuntimeService runtimeService;
+
     public static void main(String... args) {
         SpringApplication.run(CamundaApplication.class, args);
     }
 
+    @EventListener
+    private void processPostDeploy(PostDeployEvent event) {
 
+        // starting process instance with variables
+        Map<String, Object> variables = new HashMap<String,Object>();
+        variables.put("content", "New tweet about my new book");
+        runtimeService.startProcessInstanceByKey("AntiAgileTweetProcess", variables);
+
+    }
 }

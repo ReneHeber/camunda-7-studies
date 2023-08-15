@@ -5,10 +5,15 @@
       <bpmn:outgoing>Flow_0fh8uoe</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_0fh8uoe" sourceRef="StartEvent_TweetReceived" targetRef="Task_ReviewTweet" />
-    <bpmn:endEvent id="EndEvent_TweetPublished" name="Tweet published">
+    <bpmn:endEvent id="EndEvent_TweetHandled" name="Tweet handled">
       <bpmn:incoming>Flow_0hw9bre</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_0hw9bre" sourceRef="Task_PublishOnTwitter" targetRef="EndEvent_TweetPublished" />
+    <bpmn:sequenceFlow id="Flow_0hw9bre" sourceRef="Task_PublishOnTwitter" targetRef="EndEvent_TweetHandled" />
+    <bpmn:scriptTask id="Task_PublishOnTwitter" name="Publish on Twitter" scriptFormat="javascript">
+      <bpmn:incoming>Flow_Yes</bpmn:incoming>
+      <bpmn:outgoing>Flow_0hw9bre</bpmn:outgoing>
+      <bpmn:script>print("publishing tweet");</bpmn:script>
+    </bpmn:scriptTask>
     <bpmn:endEvent id="EndEvent_TweetRejected" name="Tweet rejected">
       <bpmn:incoming>Flow_02j1q2b</bpmn:incoming>
     </bpmn:endEvent>
@@ -34,10 +39,6 @@
       <bpmn:outgoing>Flow_02j1q2b</bpmn:outgoing>
       <bpmn:script>print("notifiying employee of rejection");</bpmn:script>
     </bpmn:scriptTask>
-    <bpmn:serviceTask id="Task_PublishOnTwitter" name="Publish on Twitter" camunda:class="org.camunda.bpm.developers.delegate.CreateTweetDelegate">
-      <bpmn:incoming>Flow_Yes</bpmn:incoming>
-      <bpmn:outgoing>Flow_0hw9bre</bpmn:outgoing>
-    </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="AntiAgileTweetProcess">
@@ -45,6 +46,21 @@
         <dc:Bounds x="179" y="99" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="161" y="142" width="73" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0etjdzs_di" bpmnElement="EndEvent_TweetHandled">
+        <dc:Bounds x="762" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="745" y="142" width="71" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0rer3mr_di" bpmnElement="Task_PublishOnTwitter">
+        <dc:Bounds x="600" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0vwjy4w_di" bpmnElement="EndEvent_TweetRejected">
+        <dc:Bounds x="762" y="212" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="745" y="255" width="71" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1ymwan0_di" bpmnElement="Gateway_1ymwan0" isMarkerVisible="true">
@@ -59,38 +75,23 @@
       <bpmndi:BPMNShape id="Activity_16hoc6h_di" bpmnElement="Task_NotifyEmployeeRejection">
         <dc:Bounds x="600" y="190" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0fmz8hj_di" bpmnElement="Task_PublishOnTwitter">
-        <dc:Bounds x="600" y="77" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0etjdzs_di" bpmnElement="EndEvent_TweetPublished">
-        <dc:Bounds x="792" y="99" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="772" y="142" width="79" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0vwjy4w_di" bpmnElement="EndEvent_TweetRejected">
-        <dc:Bounds x="792" y="212" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="775" y="255" width="71" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0fh8uoe_di" bpmnElement="Flow_0fh8uoe">
         <di:waypoint x="215" y="117" />
         <di:waypoint x="270" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0hw9bre_di" bpmnElement="Flow_0hw9bre">
         <di:waypoint x="700" y="117" />
-        <di:waypoint x="792" y="117" />
+        <di:waypoint x="762" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_02j1q2b_di" bpmnElement="Flow_02j1q2b">
         <di:waypoint x="700" y="230" />
-        <di:waypoint x="792" y="230" />
+        <di:waypoint x="762" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0yorsbt_di" bpmnElement="Flow_Yes">
         <di:waypoint x="495" y="117" />
         <di:waypoint x="600" y="117" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="521" y="99" width="18" height="14" />
+          <dc:Bounds x="539" y="99" width="18" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_19wwz6a_di" bpmnElement="Flow_No">

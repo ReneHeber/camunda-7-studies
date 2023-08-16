@@ -3,6 +3,7 @@ package org.camunda.bpm.developers;
 import org.assertj.core.api.Assertions;
 import org.camunda.bpm.developers.delegate.LoggerDelegate;
 import org.camunda.bpm.developers.delegate.SendRejectionNotificationDelegate;
+import org.camunda.bpm.developers.service.EmailService;
 import org.camunda.bpm.engine.ProcessEngineConfiguration;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
@@ -27,11 +28,15 @@ import java.util.Map;
 
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.assertThat;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
+
 import org.camunda.bpm.extension.process_test_coverage.junit.rules.TestCoverageProcessEngineRuleBuilder;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 
 @ExtendWith(ProcessEngineCoverageExtension.class)
-@Deployment(resources = "c7-anti-agil-tweet.bpmn")
+@Deployment(resources = "c7-anti-agile-tweet.bpmn")
 public class ProcessTestReviewTweet {
 
 /*    @RegisterExtension
@@ -47,7 +52,10 @@ public class ProcessTestReviewTweet {
             new ProcessCoverageInMemProcessEngineConfiguration().setHistory(ProcessEngineConfiguration.HISTORY_FULL)).build();*/
 
     private static final String PROCESS_DEFINITION_KEY = "AntiAgileTweetProcess";
+    public static final String START_EVENT_TWEET_RECEIVED = "StartEvent_TweetReceived";
     public static final String TASK_REVIEW_TWEET = "Task_ReviewTweet";
+    public static final String SERVICE_TASK_PUBLISH_TWEET = "Task_PublishOnTwitter";
+    public static final String SERVICE_TASK_NOTIFY_EMPLOYEE= "Task_NotifyEmployeeRejection";
     public static final String END_EVENT_TWEET_PUBLISHED = "EndEvent_TweetPublished";
     public static final String END_EVENT_TWEET_REJECTED = "EndEvent_TweetRejected";
 //    private static RuntimeService runtimeService;
@@ -62,12 +70,15 @@ public class ProcessTestReviewTweet {
             .assertClassCoverageAtLeast(0.9)
             .build();
 
+    @Mock
+    private EmailService emailService;
+
     @Before
     public void setup() {
         init(rule.getProcessEngine());
         // The Mocks class can be used to make beans available inside the Expression Language without the need of any bean manager.
         // Register the bean inside the application:
-        Mocks.register("rejectionNotificationDelegate", new SendRejectionNotificationDelegate());
+        Mocks.register("rejectionNotificationDelegate", new SendRejectionNotificationDelegate(emailService));
     }
 
     /**
@@ -110,6 +121,10 @@ public class ProcessTestReviewTweet {
         Assertions.assertThat(processInstanceQuery().count()).isEqualTo(1);
         assertThat(processInstance)
                 .hasVariables("content");
+        // execute the transaction boundary or wait state at the start event
+        assertThat(processInstance).isWaitingAt(START_EVENT_TWEET_RECEIVED);
+        execute(job());
+
         assertThat(processInstance).isWaitingAt(TASK_REVIEW_TWEET);
 
         // retrieve only tasks for the management Candidate group
@@ -138,6 +153,9 @@ public class ProcessTestReviewTweet {
         // complete task with variables
         // complete(task(processInstance), withVariables("approved", true));
 
+        assertThat(processInstance).isWaitingAt(SERVICE_TASK_PUBLISH_TWEET);
+        execute(job());
+
         assertThat(processInstance).hasPassed(END_EVENT_TWEET_PUBLISHED).isEnded();
     }
 
@@ -146,8 +164,15 @@ public class ProcessTestReviewTweet {
         // Create a HashMap to put in variables for the process instance
         Map<String, Object> variables = new HashMap<String, Object>();
         variables.put("content", "My first tweet about JUnit Testing");
+        variables.put("employee", "Sarah");
+        variables.put("rejectionReason", "tweet does not look good");
+        variables.put("approved",false);
         // Start process with Java API and variables
-        final ProcessInstance processInstance = runtimeService().startProcessInstanceByKey(PROCESS_DEFINITION_KEY, variables);
+        final ProcessInstance processInstance = runtimeService()
+                .createProcessInstanceByKey(PROCESS_DEFINITION_KEY)
+                .setVariables(variables)
+                .startAfterActivity(TASK_REVIEW_TWEET)
+                .execute();
 
         // Make assertions on the process instance
         assertThat(processInstance).isStarted();
@@ -155,11 +180,16 @@ public class ProcessTestReviewTweet {
         // And it should be the only instance
         Assertions.assertThat(processInstanceQuery().count()).isEqualTo(1);
         assertThat(processInstance)
-                .hasVariables("content");
-        assertThat(processInstance).isWaitingAt(TASK_REVIEW_TWEET);
+                .hasVariables("content","approved","employee","rejectionReason");
 
-        // complete task with variables
-        complete(task(processInstance), withVariables("approved", false));
+        assertThat(processInstance).isWaitingAt(SERVICE_TASK_NOTIFY_EMPLOYEE);
+        execute(job());
+        assertThat(processInstance)
+                .hasVariables("message","emailId");
+        Mockito.verify(emailService).sendEmail(eq("Sarah"), anyString(), anyString());
+
+        // timer event
+        execute(job());
 
         assertThat(processInstance).hasPassed(END_EVENT_TWEET_REJECTED).isEnded();
     }

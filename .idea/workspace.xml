@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bc4d672-731c-4bd7-8182-4cd749b9b306" name="Changes" comment="JUnit testing of bpmn processes">
-      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/java/org/camunda/bpm/developers/delegate/SendRejectionNotificationDelegate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/resources/static.forms/review-tweet.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/resources/static.forms/start.html" afterDir="false" />
+    <list default="true" id="0bc4d672-731c-4bd7-8182-4cd749b9b306" name="Changes" comment="Human Tasks">
+      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/java/org/camunda/bpm/developers/service/EmailService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/resources/c7-anti-agil-tweet-v1.bpmn" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/resources/c7-anti-agil-tweet-v1.bpmn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/resources/c7-anti-agil-tweet.bpmn" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/resources/c7-anti-agil-tweet.bpmn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/java/org/camunda/bpm/developers/CamundaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/java/org/camunda/bpm/developers/CamundaApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/java/org/camunda/bpm/developers/delegate/CreateTweetDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/java/org/camunda/bpm/developers/delegate/CreateTweetDelegate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/java/org/camunda/bpm/developers/delegate/SendRejectionNotificationDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/java/org/camunda/bpm/developers/delegate/SendRejectionNotificationDelegate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/resources/c7-anti-agil-tweet-v1.bpmn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/resources/c7-anti-agil-tweet.bpmn" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/test/java/org/camunda/bpm/developers/ProcessTestReviewTweet.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/test/java/org/camunda/bpm/developers/ProcessTestReviewTweet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -81,22 +82,7 @@
       <recent name="org.camunda.bpm.experiments.delegate" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.CamundaApplication (2)">
-    <configuration name="CamundaApplicationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="c7-spring-boot-app-developers-course" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.camunda.bpm.developers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.camunda.bpm.developers" />
-      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.developers.CamundaApplicationTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.ProcessTestReviewTweet.testTweetRejection">
     <configuration name="ProcessTestReviewTweet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="c7-spring-boot-app-developers-course" />
       <extension name="coverage">
@@ -161,6 +147,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ProcessTestReviewTweet.testTweetRejection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="c7-spring-boot-app-developers-course" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.camunda.bpm.developers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.camunda.bpm.developers" />
+      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.developers.ProcessTestReviewTweet" />
+      <option name="METHOD_NAME" value="testTweetRejection" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CamundaApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="c7-spring-boot-app-experiments" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.camunda.bpm.experiments.CamundaApplication" />
@@ -184,11 +186,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProcessTestReviewTweet.testHappyPathExtended" />
+        <item itemvalue="JUnit.ProcessTestReviewTweet.testTweetRejection" />
         <item itemvalue="JUnit.ProcessTestReviewTweet" />
+        <item itemvalue="JUnit.ProcessTestReviewTweet.testHappyPathExtended" />
         <item itemvalue="JUnit.ProcessTestReviewTweet.testHappyPath" />
         <item itemvalue="JUnit.ProcessTestReviewTweet.testDeployment" />
-        <item itemvalue="JUnit.CamundaApplicationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -203,7 +205,7 @@
       <workItem from="1691756885809" duration="7615000" />
       <workItem from="1692006645558" duration="5038000" />
       <workItem from="1692080488418" duration="20852000" />
-      <workItem from="1692167211114" duration="9683000" />
+      <workItem from="1692167211114" duration="15073000" />
     </task>
     <task id="LOCAL-00001" summary="Adding experimenting spring boot app">
       <created>1691764757023</created>
@@ -226,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692111164151</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Human Tasks">
+      <created>1692179730671</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1692179730672</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,6 +256,7 @@
     <MESSAGE value="Adding experimenting spring boot app" />
     <MESSAGE value="Adding module spring boot app for developers course" />
     <MESSAGE value="JUnit testing of bpmn processes" />
-    <option name="LAST_COMMIT_MESSAGE" value="JUnit testing of bpmn processes" />
+    <MESSAGE value="Human Tasks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Human Tasks" />
   </component>
 </project>

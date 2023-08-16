@@ -11,8 +11,8 @@
 
 camunda.bpm:
   admin-user:
-    id: demo
-    password: demo
+    id: d
+    password: d
     firstName: Demo
     lastName: Demo
   filter:

@@ -1,12 +1,16 @@
 package org.camunda.bpm.developers;
 
 import org.assertj.core.api.Assertions;
+import org.camunda.bpm.developers.delegate.LoggerDelegate;
+import org.camunda.bpm.developers.delegate.SendRejectionNotificationDelegate;
 import org.camunda.bpm.engine.ProcessEngineConfiguration;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
+import org.camunda.bpm.engine.task.Task;
 import org.camunda.bpm.engine.test.Deployment;
 import org.camunda.bpm.engine.test.ProcessEngineRule;
 import org.camunda.bpm.engine.test.junit5.ProcessEngineExtension;
+import org.camunda.bpm.engine.test.mock.Mocks;
 import org.camunda.bpm.extension.process_test_coverage.junit.rules.ProcessCoverageInMemProcessEngineConfiguration;
 import org.camunda.bpm.extension.process_test_coverage.junit.rules.TestCoverageProcessEngineRule;
 import org.camunda.bpm.extension.process_test_coverage.junit5.ProcessEngineCoverageExtension;
@@ -18,11 +22,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.assertThat;
 import org.camunda.bpm.extension.process_test_coverage.junit.rules.TestCoverageProcessEngineRuleBuilder;
+import org.mockito.Mock;
 
 @ExtendWith(ProcessEngineCoverageExtension.class)
 @Deployment(resources = "c7-anti-agil-tweet.bpmn")
@@ -59,6 +65,9 @@ public class ProcessTestReviewTweet {
     @Before
     public void setup() {
         init(rule.getProcessEngine());
+        // The Mocks class can be used to make beans available inside the Expression Language without the need of any bean manager.
+        // Register the bean inside the application:
+        Mocks.register("rejectionNotificationDelegate", new SendRejectionNotificationDelegate());
     }
 
     /**
@@ -78,7 +87,7 @@ public class ProcessTestReviewTweet {
         // Start process with Java API and variables
         ProcessInstance processInstance = runtimeService().startProcessInstanceByKey(PROCESS_DEFINITION_KEY, variables);
 
-        // complete that task
+        // complete task
         complete(task(processInstance));
 
         // Make assertions on the process instance
@@ -103,8 +112,31 @@ public class ProcessTestReviewTweet {
                 .hasVariables("content");
         assertThat(processInstance).isWaitingAt(TASK_REVIEW_TWEET);
 
-        // complete that task with variables
-        complete(task(processInstance), withVariables("approved", true));
+        // retrieve only tasks for the management Candidate group
+        List<Task> taskList = taskService()
+                .createTaskQuery()
+                .taskCandidateGroup("management")
+                .processInstanceId(processInstance.getId())
+                .list();
+
+        System.out.println(taskList);
+        for (int i=0; i<taskList.size(); i++) {
+            System.out.println(taskList.get(i));
+        }
+
+        // make sure the list is not null and that it only has one item
+        //assertThat(taskList).isNotNull();
+        //assertThat(taskList).hasSize(1);
+
+        // get the one and only task at position zero
+        Task task = taskList.get(0);
+        // Complete this task using taskService() and passing in the approved variable
+        Map<String, Object> approvedMap = new HashMap<String, Object>();
+        approvedMap.put("approved", true);
+        taskService().complete(task.getId(), approvedMap);
+
+        // complete task with variables
+        // complete(task(processInstance), withVariables("approved", true));
 
         assertThat(processInstance).hasPassed(END_EVENT_TWEET_PUBLISHED).isEnded();
     }
@@ -126,7 +158,7 @@ public class ProcessTestReviewTweet {
                 .hasVariables("content");
         assertThat(processInstance).isWaitingAt(TASK_REVIEW_TWEET);
 
-        // complete that task with variables
+        // complete task with variables
         complete(task(processInstance), withVariables("approved", false));
 
         assertThat(processInstance).hasPassed(END_EVENT_TWEET_REJECTED).isEnded();

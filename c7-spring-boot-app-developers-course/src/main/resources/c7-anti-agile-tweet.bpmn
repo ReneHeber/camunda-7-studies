@@ -8,11 +8,11 @@
     <bpmn:endEvent id="EndEvent_TweetPublished" name="Tweet published">
       <bpmn:incoming>Flow_0isww2z</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_0hw9bre" sourceRef="Task_PublishOnTwitter" targetRef="Event_1rm42p6" />
+    <bpmn:sequenceFlow id="Flow_0hw9bre" sourceRef="Task_PublishOnTwitter" targetRef="TimerEvent_A" />
     <bpmn:endEvent id="EndEvent_TweetRejected" name="Tweet rejected">
       <bpmn:incoming>Flow_1bjk076</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_02j1q2b" sourceRef="Task_NotifyEmployeeRejection" targetRef="Event_0y5zksz" />
+    <bpmn:sequenceFlow id="Flow_02j1q2b" sourceRef="Task_NotifyEmployeeRejection" targetRef="TimerEvent_B" />
     <bpmn:exclusiveGateway id="Gateway_1ymwan0" name="Approved?">
       <bpmn:incoming>Flow_0udso6a</bpmn:incoming>
       <bpmn:outgoing>Flow_Yes</bpmn:outgoing>
@@ -48,22 +48,22 @@
       <bpmn:incoming>Flow_No</bpmn:incoming>
       <bpmn:outgoing>Flow_02j1q2b</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="Flow_1bjk076" sourceRef="Event_0y5zksz" targetRef="EndEvent_TweetRejected" />
-    <bpmn:intermediateCatchEvent id="Event_0y5zksz" name="5 min">
+    <bpmn:sequenceFlow id="Flow_1bjk076" sourceRef="TimerEvent_B" targetRef="EndEvent_TweetRejected" />
+    <bpmn:intermediateCatchEvent id="TimerEvent_B" name="5 min">
       <bpmn:incoming>Flow_02j1q2b</bpmn:incoming>
       <bpmn:outgoing>Flow_1bjk076</bpmn:outgoing>
       <bpmn:timerEventDefinition id="TimerEventDefinition_0p62hjr">
         <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT5M</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
-    <bpmn:intermediateCatchEvent id="Event_1rm42p6" name="5 min">
+    <bpmn:intermediateCatchEvent id="TimerEvent_A" name="5 min">
       <bpmn:incoming>Flow_0hw9bre</bpmn:incoming>
       <bpmn:outgoing>Flow_0isww2z</bpmn:outgoing>
       <bpmn:timerEventDefinition id="TimerEventDefinition_0q76cou">
         <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT5M</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
-    <bpmn:sequenceFlow id="Flow_0isww2z" sourceRef="Event_1rm42p6" targetRef="EndEvent_TweetPublished" />
+    <bpmn:sequenceFlow id="Flow_0isww2z" sourceRef="TimerEvent_A" targetRef="EndEvent_TweetPublished" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="AntiAgileTweetProcess">
@@ -71,6 +71,18 @@
         <dc:Bounds x="179" y="99" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="161" y="142" width="73" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0etjdzs_di" bpmnElement="EndEvent_TweetPublished">
+        <dc:Bounds x="882" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="862" y="142" width="79" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0vwjy4w_di" bpmnElement="EndEvent_TweetRejected">
+        <dc:Bounds x="882" y="212" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="865" y="255" width="71" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_1ymwan0_di" bpmnElement="Gateway_1ymwan0" isMarkerVisible="true">
@@ -85,32 +97,20 @@
       <bpmndi:BPMNShape id="Activity_0fmz8hj_di" bpmnElement="Task_PublishOnTwitter">
         <dc:Bounds x="610" y="77" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1poyxx6_di" bpmnElement="Task_NotifyEmployeeRejection">
-        <dc:Bounds x="610" y="190" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0etjdzs_di" bpmnElement="EndEvent_TweetPublished">
-        <dc:Bounds x="882" y="99" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="862" y="142" width="79" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0vwjy4w_di" bpmnElement="EndEvent_TweetRejected">
-        <dc:Bounds x="882" y="212" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="865" y="255" width="71" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_12e6a6t_di" bpmnElement="Event_0y5zksz">
+      <bpmndi:BPMNShape id="Event_12e6a6t_di" bpmnElement="TimerEvent_B">
         <dc:Bounds x="772" y="212" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="777" y="255" width="27" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_1xyt478" bpmnElement="Event_1rm42p6">
+      <bpmndi:BPMNShape id="BPMNShape_1xyt478" bpmnElement="TimerEvent_A">
         <dc:Bounds x="772" y="99" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="777" y="142" width="27" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1poyxx6_di" bpmnElement="Task_NotifyEmployeeRejection">
+        <dc:Bounds x="608" y="190" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0fh8uoe_di" bpmnElement="Flow_0fh8uoe">
         <di:waypoint x="215" y="117" />
@@ -121,7 +121,7 @@
         <di:waypoint x="772" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_02j1q2b_di" bpmnElement="Flow_02j1q2b">
-        <di:waypoint x="710" y="230" />
+        <di:waypoint x="708" y="230" />
         <di:waypoint x="772" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0yorsbt_di" bpmnElement="Flow_Yes">
@@ -134,7 +134,7 @@
       <bpmndi:BPMNEdge id="Flow_19wwz6a_di" bpmnElement="Flow_No">
         <di:waypoint x="480" y="142" />
         <di:waypoint x="480" y="230" />
-        <di:waypoint x="610" y="230" />
+        <di:waypoint x="608" y="230" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="488" y="183" width="15" height="14" />
         </bpmndi:BPMNLabel>

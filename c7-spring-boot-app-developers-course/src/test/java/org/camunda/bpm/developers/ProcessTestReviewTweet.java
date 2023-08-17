@@ -30,10 +30,13 @@ import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.*;
 
 import org.camunda.bpm.extension.process_test_coverage.junit.rules.TestCoverageProcessEngineRuleBuilder;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+
+import javax.validation.constraints.Email;
 
 @ExtendWith(ProcessEngineCoverageExtension.class)
 @Deployment(resources = "c7-anti-agile-tweet.bpmn")
@@ -76,9 +79,6 @@ public class ProcessTestReviewTweet {
     @Before
     public void setup() {
         init(rule.getProcessEngine());
-        // The Mocks class can be used to make beans available inside the Expression Language without the need of any bean manager.
-        // Register the bean inside the application:
-        Mocks.register("rejectionNotificationDelegate", new SendRejectionNotificationDelegate(emailService));
     }
 
     /**
@@ -161,6 +161,16 @@ public class ProcessTestReviewTweet {
 
     @Test
     public void testTweetRejection() {
+
+        EmailService mockEmailService = Mockito.mock(EmailService.class);
+        // Define the expected behavior of the service
+        Mockito.when(mockEmailService.sendEmail(anyString(), anyString(), anyString())).thenReturn("Mocked Result of EmailService");
+
+        // The Mocks class can be used to make beans available inside the Expression Language without the need of any bean manager
+        SendRejectionNotificationDelegate sendRejectionNotification = new SendRejectionNotificationDelegate(mockEmailService);
+        // Register the bean inside the application:
+        Mocks.register("rejectionNotificationDelegate", sendRejectionNotification);
+
         // Create a HashMap to put in variables for the process instance
         Map<String, Object> variables = new HashMap<String, Object>();
         variables.put("content", "My first tweet about JUnit Testing");
@@ -179,6 +189,7 @@ public class ProcessTestReviewTweet {
         assertThat(processInstance).isActive();
         // And it should be the only instance
         Assertions.assertThat(processInstanceQuery().count()).isEqualTo(1);
+
         assertThat(processInstance)
                 .hasVariables("content","approved","employee","rejectionReason");
 
@@ -186,9 +197,10 @@ public class ProcessTestReviewTweet {
         execute(job());
         assertThat(processInstance)
                 .hasVariables("message","emailId");
-        Mockito.verify(emailService).sendEmail(eq("Sarah"), anyString(), anyString());
+        Mockito.verify(mockEmailService).sendEmail(eq("Sarah"), anyString(), anyString());
 
         // timer event
+        assertThat(processInstance).job("TimerEvent_B");
         execute(job());
 
         assertThat(processInstance).hasPassed(END_EVENT_TWEET_REJECTED).isEnded();

@@ -7,7 +7,12 @@ import org.slf4j.LoggerFactory;
 public class TwitterService {
     private final Logger LOGGER = LoggerFactory.getLogger(CreateTweetDelegate.class.getName());
 
-    public void updateStatus(String content) {
+    public String updateStatus(String content) {
+        // current time in milliseconds
+        String tweetId = Long.toString(System.currentTimeMillis());
+
         LOGGER.info("Tweet: " + content);
+
+        return tweetId;
     }
 }

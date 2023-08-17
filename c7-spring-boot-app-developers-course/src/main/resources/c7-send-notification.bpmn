@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1xkwog0" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.12.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.19.0">
+  <bpmn:process id="SendNotificationProcess" name="Send Notification" isExecutable="true" camunda:historyTimeToLive="5">
+    <bpmn:startEvent id="StartEvent_NotificationNeedsToBeSend" name="Notification needs to be send">
+      <bpmn:outgoing>Flow_1p1096n</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1p1096n" sourceRef="StartEvent_NotificationNeedsToBeSend" targetRef="Task_SendNotification" />
+    <bpmn:serviceTask id="Task_SendNotification" name="Send Notification" camunda:type="external" camunda:topic="send-notification">
+      <bpmn:incoming>Flow_1p1096n</bpmn:incoming>
+      <bpmn:outgoing>Flow_17cykrq</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_NotificationSent" name="Notification sent">
+      <bpmn:incoming>Flow_0isz2my</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_17cykrq" sourceRef="Task_SendNotification" targetRef="TimerEvent_A" />
+    <bpmn:intermediateCatchEvent id="TimerEvent_A" name="5 min">
+      <bpmn:incoming>Flow_17cykrq</bpmn:incoming>
+      <bpmn:outgoing>Flow_0isz2my</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_0p62hjr">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT5M</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_0isz2my" sourceRef="TimerEvent_A" targetRef="EndEvent_NotificationSent" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="SendNotificationProcess">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_NotificationNeedsToBeSend">
+        <dc:Bounds x="179" y="79" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="156" y="122" width="88" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1459x3y_di" bpmnElement="Task_SendNotification">
+        <dc:Bounds x="270" y="57" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0wdy7j5_di" bpmnElement="EndEvent_NotificationSent">
+        <dc:Bounds x="532" y="79" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="510" y="122" width="80" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_12e6a6t_di" bpmnElement="TimerEvent_A">
+        <dc:Bounds x="422" y="79" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="427" y="122" width="27" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1p1096n_di" bpmnElement="Flow_1p1096n">
+        <di:waypoint x="215" y="97" />
+        <di:waypoint x="270" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17cykrq_di" bpmnElement="Flow_17cykrq">
+        <di:waypoint x="370" y="97" />
+        <di:waypoint x="422" y="97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0isz2my_di" bpmnElement="Flow_0isz2my">
+        <di:waypoint x="458" y="97" />
+        <di:waypoint x="532" y="97" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

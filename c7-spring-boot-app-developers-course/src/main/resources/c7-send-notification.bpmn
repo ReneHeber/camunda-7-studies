@@ -10,17 +10,9 @@
       <bpmn:outgoing>Flow_17cykrq</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:endEvent id="EndEvent_NotificationSent" name="Notification sent">
-      <bpmn:incoming>Flow_0isz2my</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_17cykrq" sourceRef="Task_SendNotification" targetRef="TimerEvent_A" />
-    <bpmn:intermediateCatchEvent id="TimerEvent_A" name="5 min">
       <bpmn:incoming>Flow_17cykrq</bpmn:incoming>
-      <bpmn:outgoing>Flow_0isz2my</bpmn:outgoing>
-      <bpmn:timerEventDefinition id="TimerEventDefinition_0p62hjr">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT5M</bpmn:timeDuration>
-      </bpmn:timerEventDefinition>
-    </bpmn:intermediateCatchEvent>
-    <bpmn:sequenceFlow id="Flow_0isz2my" sourceRef="TimerEvent_A" targetRef="EndEvent_NotificationSent" />
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_17cykrq" sourceRef="Task_SendNotification" targetRef="EndEvent_NotificationSent" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="SendNotificationProcess">
@@ -40,22 +32,12 @@
           <dc:Bounds x="510" y="122" width="80" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_12e6a6t_di" bpmnElement="TimerEvent_A">
-        <dc:Bounds x="422" y="79" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="427" y="122" width="27" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1p1096n_di" bpmnElement="Flow_1p1096n">
         <di:waypoint x="215" y="97" />
         <di:waypoint x="270" y="97" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17cykrq_di" bpmnElement="Flow_17cykrq">
         <di:waypoint x="370" y="97" />
-        <di:waypoint x="422" y="97" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0isz2my_di" bpmnElement="Flow_0isz2my">
-        <di:waypoint x="458" y="97" />
         <di:waypoint x="532" y="97" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>

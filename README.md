@@ -20,11 +20,16 @@ Camunda 7 study project with processes, DMNs, Java delegates and logger
 - LoggerDelegate (logging)
 - ToUpperCaseDelegate (getting variable from Camunda process and creating a new one)
 
-# c7-charge-card-worker-getstarted
-External worker for c7-getstarted-application.
+## c7-charge-card-worker-getstarted
+External worker for c7-spring-boot-application-getstarted application.
 
 # c7-spring-boot-app-developers-course
-Project for developers course from Camunda: https://academy.camunda.com/c7-platform-java
+Project for free Camunda course "Camunda 7 - Platform for Java Developers": https://academy.camunda.com/c7-platform-java
+Exercises: https://training.camunda.com/java-dev/master/index.html
+No Enterprise Version needed.
+
+## c7-notification-worker
+External worker for c7-spring-boot-app-developers-course application.
 
 # c7-spring-boot-app-experiments
 Studies after finishing getstarted-project of Camunda Docs.

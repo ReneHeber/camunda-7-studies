@@ -6,8 +6,11 @@ import org.camunda.bpm.client.topic.TopicSubscriptionBuilder;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class NotificationWorker {
+    private final static Logger LOGGER = Logger.getLogger(NotificationWorker.class.getName());
+
     public static void main( String[] args ) {
         System.out.println( "Hello Notification Worker !" );
 
@@ -30,7 +33,7 @@ public class NotificationWorker {
             Map<String, Object> variables = new HashMap<String, Object>();
             variables.put("notficationTimestamp", new Date());
 
-            System.out.println("Notification " + new Date() + ": " + message);
+            LOGGER.info("Notification " + new Date() + ": " + message);
 
             // Complete the task
             externalTaskService.complete(externalTask, variables);

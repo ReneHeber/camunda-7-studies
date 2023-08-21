@@ -1,47 +1,38 @@
 package org.camunda.bpm.developers;
 
 import org.assertj.core.api.Assertions;
-import org.camunda.bpm.developers.service.EmailService;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.test.Deployment;
-import org.camunda.bpm.extension.process_test_coverage.junit.rules.TestCoverageProcessEngineRule;
-import org.camunda.bpm.extension.process_test_coverage.junit.rules.TestCoverageProcessEngineRuleBuilder;
+import org.camunda.bpm.engine.test.junit5.ProcessEngineExtension;
 import org.camunda.bpm.extension.process_test_coverage.junit5.ProcessEngineCoverageExtension;
-import org.junit.Before;
-import org.junit.ClassRule;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.camunda.bpm.engine.test.assertions.bpmn.AbstractAssertions.init;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.assertThat;
-import static org.mockito.ArgumentMatchers.anyString;
 
 @ExtendWith(ProcessEngineCoverageExtension.class)
 @Deployment(resources = "c7-send-notification.bpmn")
 public class ProcessTestSendNotification {
     private static final String PROCESS_DEFINITION_KEY = "SendNotificationProcess";
     public static final String START_EVENT_NOTIFICATION_NEEDED = "StartEvent_NotificationNeedsToBeSend";
-    public static final String SERVICE_TASK_REVIEW_TWEET = "Task_SendNotification";
+    public static final String SERVICE_TASK_SEND_NOTIFICATION = "Task_SendNotification";
     public static final String END_EVENT_NOTIFICATION_SENT = "EndEvent_NotificationSent";
 
-    // Use @ClassRule to set up something that can be reused by all the test methods, if you can achieve that in a static method.
-    //
-    // Use @Rule to set up something that needs to be created a new, or reset, for each test method.
-    @Rule
-    @ClassRule
-    public static TestCoverageProcessEngineRule rule = TestCoverageProcessEngineRuleBuilder.create()
-            .assertClassCoverageAtLeast(0.9)
+    @RegisterExtension
+    public static ProcessEngineExtension extension = ProcessEngineExtension.builder()
             .build();
 
-    @Before
+    @BeforeEach
     public void setup() {
-        init(rule.getProcessEngine());
+        init(extension.getProcessEngine());
     }
 
     /**
@@ -70,25 +61,18 @@ public class ProcessTestSendNotification {
         assertThat(processInstance)
                 .hasVariables("message");
 
-        assertThat(processInstance).isWaitingAt(SERVICE_TASK_REVIEW_TWEET)
+        assertThat(processInstance).isWaitingAt(SERVICE_TASK_SEND_NOTIFICATION)
                 .externalTask()
                 .hasTopicName("send-notification");
-        complete(externalTask());
+        complete(externalTask(), withVariables("notficationTimestamp", "mocked " + new Date()));
 
         assertThat(processInstance)
                 .hasVariables("notficationTimestamp");
 
         // timer event
-        assertThat(processInstance).job("TimerEvent_A");
-        execute(job());
+/*        assertThat(processInstance).job("TimerEvent_A");
+        execute(job());*/
 
         assertThat(processInstance).hasPassed(END_EVENT_NOTIFICATION_SENT).isEnded();
     }
-
-
-
-
-
-
-
 }

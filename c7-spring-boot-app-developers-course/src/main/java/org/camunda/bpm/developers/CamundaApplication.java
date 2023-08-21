@@ -42,7 +42,7 @@ public class CamundaApplication {
         Map<String, Object> variablesC = new HashMap<String,Object>();
         variablesC.put("message", "New tweet about my new book");
 
-        for (int i = 0; i<100; i++) {
+        for (int i = 0; i<5; i++) {
             runtimeService.startProcessInstanceByKey("SendNotificationProcess", variablesC);
         }
 

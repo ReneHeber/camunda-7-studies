@@ -1,24 +1,17 @@
 package org.camunda.bpm.developers;
 
 import org.assertj.core.api.Assertions;
-import org.camunda.bpm.developers.delegate.LoggerDelegate;
 import org.camunda.bpm.developers.delegate.SendRejectionNotificationDelegate;
 import org.camunda.bpm.developers.service.EmailService;
 import org.camunda.bpm.engine.ProcessEngineConfiguration;
-import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
 import org.camunda.bpm.engine.test.Deployment;
-import org.camunda.bpm.engine.test.ProcessEngineRule;
-import org.camunda.bpm.engine.test.junit5.ProcessEngineExtension;
 import org.camunda.bpm.engine.test.mock.Mocks;
 import org.camunda.bpm.extension.process_test_coverage.junit.rules.ProcessCoverageInMemProcessEngineConfiguration;
-import org.camunda.bpm.extension.process_test_coverage.junit.rules.TestCoverageProcessEngineRule;
 import org.camunda.bpm.extension.process_test_coverage.junit5.ProcessEngineCoverageExtension;
-import org.junit.Before;
-import org.junit.ClassRule;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
@@ -28,9 +21,9 @@ import java.util.Map;
 
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.assertThat;
+import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.*;
 
 import org.camunda.bpm.extension.process_test_coverage.junit.rules.TestCoverageProcessEngineRuleBuilder;
 import org.mockito.Mock;
@@ -42,18 +35,6 @@ import javax.validation.constraints.Email;
 @Deployment(resources = "c7-anti-agile-tweet.bpmn")
 public class ProcessTestReviewTweet {
 
-/*    @RegisterExtension
-    public static ProcessEngineExtension extension = ProcessEngineExtension.builder()
-            .build();*/
-
-    // Use the @RegisterExtension to create a referenceable ProcessEngineExtension object which gives you access to more configuration options.
-    //
-    /*
-    @RegisterExtension
-//    public static ProcessEngineCoverageExtension extension = ProcessEngineExtensionProvider.extension;
-    public static ProcessEngineCoverageExtension extension = ProcessEngineCoverageExtension.builder(
-            new ProcessCoverageInMemProcessEngineConfiguration().setHistory(ProcessEngineConfiguration.HISTORY_FULL)).build();*/
-
     private static final String PROCESS_DEFINITION_KEY = "AntiAgileTweetProcess";
     public static final String START_EVENT_TWEET_RECEIVED = "StartEvent_TweetReceived";
     public static final String TASK_REVIEW_TWEET = "Task_ReviewTweet";
@@ -61,24 +42,23 @@ public class ProcessTestReviewTweet {
     public static final String SERVICE_TASK_NOTIFY_EMPLOYEE= "Task_NotifyEmployeeRejection";
     public static final String END_EVENT_TWEET_PUBLISHED = "EndEvent_TweetPublished";
     public static final String END_EVENT_TWEET_REJECTED = "EndEvent_TweetRejected";
-//    private static RuntimeService runtimeService;
 
-    // Use @ClassRule to set up something that can be reused by all the test methods, if you can achieve that in a static method.
-    //
-    // Use @Rule to set up something that needs to be created a new, or reset, for each test method.
-    @Rule
-    @ClassRule
-//    public static ProcessEngineRule rule = TestCoverageProcessEngineRuleBuilder.create().build();
-    public static TestCoverageProcessEngineRule rule = TestCoverageProcessEngineRuleBuilder.create()
-            .assertClassCoverageAtLeast(0.9)
-            .build();
+/*    @RegisterExtension
+    public static ProcessEngineExtension extension = ProcessEngineExtension.builder()
+            .build();*/
+
+    // Use the @RegisterExtension to create a referenceable ProcessEngineExtension object which gives you access to more configuration options.
+    @RegisterExtension
+//    public static ProcessEngineCoverageExtension extension = ProcessEngineExtensionProvider.extension;
+    public static ProcessEngineCoverageExtension extension = ProcessEngineCoverageExtension.builder(
+            new ProcessCoverageInMemProcessEngineConfiguration().setHistory(ProcessEngineConfiguration.HISTORY_FULL)).build();
 
     @Mock
     private EmailService emailService;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        init(rule.getProcessEngine());
+        init(extension.getProcessEngine());
     }
 
     /**
@@ -140,8 +120,8 @@ public class ProcessTestReviewTweet {
         }
 
         // make sure the list is not null and that it only has one item
-        //assertThat(taskList).isNotNull();
-        //assertThat(taskList).hasSize(1);
+        Assertions.assertThat(taskList).as("list of tasks").isNotNull();
+        Assertions.assertThat(taskList.size()).as("taskList size").isEqualTo(1);
 
         // get the one and only task at position zero
         Task task = taskList.get(0);
@@ -154,6 +134,10 @@ public class ProcessTestReviewTweet {
         // complete(task(processInstance), withVariables("approved", true));
 
         assertThat(processInstance).isWaitingAt(SERVICE_TASK_PUBLISH_TWEET);
+        execute(job());
+
+        // timer event
+        assertThat(processInstance).job("TimerEvent_A");
         execute(job());
 
         assertThat(processInstance).hasPassed(END_EVENT_TWEET_PUBLISHED).isEnded();
@@ -205,6 +189,27 @@ public class ProcessTestReviewTweet {
 
         assertThat(processInstance).hasPassed(END_EVENT_TWEET_REJECTED).isEnded();
     }
+
+    @Test
+    public void testSuperuserTweet() {
+        final ProcessInstance processInstance = runtimeService()
+                .createMessageCorrelation("superuserTweet")
+                .setVariable("content", "My Exercise 11 Tweet Sven Kaiser - " + System.currentTimeMillis())
+                .correlateWithResult()
+                .getProcessInstance();
+
+        assertThat(processInstance).isStarted();
+
+        assertThat(processInstance).isWaitingAt(SERVICE_TASK_PUBLISH_TWEET);
+        execute(job());
+
+        // timer event
+        assertThat(processInstance).job("TimerEvent_A");
+        execute(job());
+
+        assertThat(processInstance).hasPassed(END_EVENT_TWEET_PUBLISHED).isEnded();
+    }
+
 
 
     // works and can be used if one is interested

@@ -1,6 +1,7 @@
 package org.camunda.bpm.developers.delegate;
 
 import org.camunda.bpm.developers.service.TwitterService;
+import org.camunda.bpm.engine.delegate.BpmnError;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.slf4j.Logger;
@@ -16,6 +17,11 @@ public class CreateTweetDelegate implements JavaDelegate {
 
         if (content.equals("Network error")) {
             throw new RuntimeException("simulated network error");
+        }
+
+        // Usually you would use try and catch
+        if (content.equals("Trigger error event")) {
+            throw new BpmnError("error_tweet_problem","There's a problem with the tweet!");
         }
 
         // Service call

@@ -40,10 +40,16 @@ public class CamundaApplication {
 
         // starting process instance with variables
         Map<String, Object> variablesC = new HashMap<String,Object>();
-        variablesC.put("message", "New tweet about my new book");
+        variablesC.put("content", "Trigger error event");
+        variablesC.put("employee", "Sven");
+        runtimeService.startProcessInstanceByKey("AntiAgileTweetProcessError", variablesC);
+
+        // starting process instance with variables
+        Map<String, Object> variablesD = new HashMap<String,Object>();
+        variablesD.put("message", "New tweet about my new book");
 
         for (int i = 0; i<5; i++) {
-            runtimeService.startProcessInstanceByKey("SendNotificationProcess", variablesC);
+            runtimeService.startProcessInstanceByKey("SendNotificationProcess", variablesD);
         }
 
     }

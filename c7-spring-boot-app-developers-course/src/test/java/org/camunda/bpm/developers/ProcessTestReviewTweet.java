@@ -50,8 +50,8 @@ public class ProcessTestReviewTweet {
     // Use the @RegisterExtension to create a referenceable ProcessEngineExtension object which gives you access to more configuration options.
     @RegisterExtension
 //    public static ProcessEngineCoverageExtension extension = ProcessEngineExtensionProvider.extension;
-    public static ProcessEngineCoverageExtension extension = ProcessEngineCoverageExtension.builder(
-            new ProcessCoverageInMemProcessEngineConfiguration().setHistory(ProcessEngineConfiguration.HISTORY_FULL)).build();
+    public static ProcessEngineCoverageExtension extension = ProcessEngineCoverageExtension
+            .builder().assertClassCoverageAtLeast(0.1).build();
 
     @Mock
     private EmailService emailService;

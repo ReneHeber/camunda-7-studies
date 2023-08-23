@@ -6,16 +6,13 @@ import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.test.Deployment;
 import org.camunda.bpm.engine.test.junit5.ProcessEngineExtension;
 import org.camunda.bpm.engine.test.mock.Mocks;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.extension.RegisterExtension;
 import org.mockito.Mockito;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.camunda.bpm.engine.test.assertions.bpmn.AbstractAssertions.init;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -33,17 +30,6 @@ public class ProcessTestReviewTweetV2 {
     public static final String TASK_REVIEW_TWEET = "Task_ReviewTweet";
     public static final String END_EVENT_TWEET_PUBLISHED = "EndEvent_TweetPublished";
     public static final String END_EVENT_TWEET_REJECTED = "EndEvent_TweetRejected";
-
-    // Use the @RegisterExtension to create a referenceable ProcessEngineExtension object
-    // which gives you access to more configuration options.
-    @RegisterExtension
-    public static ProcessEngineExtension extension = ProcessEngineExtension.builder()
-            .build();
-
-    @BeforeEach
-    public void setup() {
-        init(extension.getProcessEngine());
-    }
 
     /**
      * Just tests if the process definition is deployable.

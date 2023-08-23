@@ -1,15 +1,20 @@
 <form>
+  <label class="control-label col-md-4">Review Tweet</label>
 
-  <label for="customerId">Customer Id:</label>
+  <div class="form-group">
+    <div class="col-md-8">
+      <label for="content">Content:</label>
 
-  <input type="text" id="customerId"
-         cam-variable-name="CUSTOMER_ID"
-         cam-variable-type="String">
+      <input type="text" id="content"
+             cam-variable-name="content"
+             cam-variable-type="String">
+    </div>
+    <div class="col-md-8">
+      <label for="approved">Approved?:</label>
 
-  <label for="customerRevenue">Customer Revenue:</label>
-
-  <input type="text" id="customerRevenue"
-         cam-variable-name="CUSTOMER_REVENUE"
-         cam-variable-type="Double">
-
+      <input type="checkbox" id="approved"
+             cam-variable-name="approved"
+             cam-variable-type="Boolean">
+    </div>
+  </div>
 </form>

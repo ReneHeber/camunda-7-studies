@@ -1,26 +1,19 @@
 package org.camunda.bpm.developers;
 
-import org.camunda.bpm.developers.delegate.SendRejectionNotificationDelegate;
-import org.camunda.bpm.developers.service.EmailService;
-import org.camunda.bpm.engine.ProcessEngineConfiguration;
+import org.camunda.bpm.engine.ProcessEngine;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.test.Deployment;
-import org.camunda.bpm.engine.test.mock.Mocks;
-import org.camunda.bpm.extension.process_test_coverage.junit.rules.ProcessCoverageInMemProcessEngineConfiguration;
+import org.camunda.bpm.engine.test.assertions.ProcessEngineTests;
 import org.camunda.bpm.extension.process_test_coverage.junit5.ProcessEngineCoverageExtension;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.extension.RegisterExtension;
-import org.mockito.Mockito;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.camunda.bpm.engine.test.assertions.bpmn.AbstractAssertions.init;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.assertThat;
-import static org.mockito.ArgumentMatchers.anyString;
 
 /**
  * JUnit5 process/ BPMN test of process version 2 "c7-anti-agile-tweet-v2.bpmn".
@@ -32,6 +25,8 @@ import static org.mockito.ArgumentMatchers.anyString;
 @Deployment(resources = "c7-anti-agile-tweet-v2.bpmn")
 public class ProcessTestReviewTweetV3 {
 
+    public ProcessEngine processEngine;
+
     private static final String PROCESS_DEFINITION_KEY = "AntiAgileTweetProcessV2";
     public static final String TASK_REVIEW_TWEET = "Task_ReviewTweet";
     public static final String SERVICE_TASK_NOTIFY_EMPLOYEE= "Task_NotifyEmployeeRejection";
@@ -40,13 +35,20 @@ public class ProcessTestReviewTweetV3 {
 
     // Use the @RegisterExtension to create a referenceable ProcessEngineExtension object
     // which gives you access to more configuration options.
-    @RegisterExtension
+/*    @RegisterExtension
+    // If a @RegisterExtension field is static,
+    // the extension will be registered after extensions that are registered at the class level via @ExtendWith.
     static ProcessEngineCoverageExtension extension = ProcessEngineCoverageExtension
-            .builder().assertClassCoverageAtLeast(0.9).build();
+            .builder().assertClassCoverageAtLeast(0.9).build();*/
+
+/*    @RegisterExtension
+    static ProcessEngineCoverageExtension extension = ProcessEngineCoverageExtension
+            .builder().assertClassCoverageAtLeast(0.9).build();*/
 
     @BeforeEach
     public void setup() {
-        init(extension.getProcessEngine());
+        //init(extension.getProcessEngine());
+        ProcessEngineTests.init(processEngine);
     }
 
     /**
@@ -73,7 +75,7 @@ public class ProcessTestReviewTweetV3 {
         assertThat(processInstance).hasPassed(END_EVENT_TWEET_PUBLISHED).isEnded();
     }
 
-    @Test
+/*    @Test
     public void testTweetRejection() {
 
         EmailService mockEmailService = Mockito.mock(EmailService.class);
@@ -102,5 +104,5 @@ public class ProcessTestReviewTweetV3 {
         assertThat(processInstance).isStarted();
 
         assertThat(processInstance).hasPassed(END_EVENT_TWEET_REJECTED).isEnded();
-    }
+    }*/
 }

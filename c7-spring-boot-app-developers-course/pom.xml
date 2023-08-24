@@ -55,6 +55,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.camunda.bpm</groupId>
+            <artifactId>camunda-engine</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
@@ -70,43 +75,24 @@
             <groupId>org.camunda.spin</groupId>
             <artifactId>camunda-spin-dataformat-all</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.camunda.bpm</groupId>
             <artifactId>camunda-engine-plugin-spin</artifactId>
         </dependency>
 
+        <!-- Move to another JavaScript engine like GraalVM JavaScript -->
+        <!-- https://docs.camunda.org/manual/7.19/update/minor/715-to-716/?__hstc=218867270.3d8e6cf9828b4b52784267f0d38e3698.1689588881414.1692020683985.1692083620859.14&__hssc=218867270.2.1692083620859&__hsfp=1803899855#java-15-and-graalvm-javascript-support-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>org.graalvm.js</groupId>
+            <artifactId>js</artifactId>
+            <version>23.0.1</version>
         </dependency>
-
         <dependency>
-            <groupId>org.camunda.bpm</groupId>
-            <artifactId>camunda-bpm-assert</artifactId>
-            <scope>test</scope>
+            <groupId>org.graalvm.js</groupId>
+            <artifactId>js-scriptengine</artifactId>
+            <version>23.0.1</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.camunda.bpm.extension</groupId>
-            <artifactId>camunda-bpm-process-test-coverage</artifactId>
-            <version>0.4.0</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- java util logging => slf4j -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jul-to-slf4j</artifactId>
-            <scope>test</scope>
-        </dependency>
-
 
         <!-- JAXB -->
         <dependency>
@@ -128,22 +114,45 @@
             <version>0.0.20131108.vaadin1</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- Test scope -->
         <dependency>
-            <groupId>org.camunda.bpm</groupId>
-            <artifactId>camunda-engine</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
 
-        <!-- Move to another JavaScript engine like GraalVM JavaScript -->
-<!--        https://docs.camunda.org/manual/7.19/update/minor/715-to-716/?__hstc=218867270.3d8e6cf9828b4b52784267f0d38e3698.1689588881414.1692020683985.1692083620859.14&__hssc=218867270.2.1692083620859&__hsfp=1803899855#java-15-and-graalvm-javascript-support-->
         <dependency>
-            <groupId>org.graalvm.js</groupId>
-            <artifactId>js</artifactId>
-            <version>23.0.1</version>
+            <groupId>org.camunda.bpm</groupId>
+            <artifactId>camunda-bpm-assert</artifactId>
+            <scope>test</scope>
         </dependency>
+
         <dependency>
-            <groupId>org.graalvm.js</groupId>
-            <artifactId>js-scriptengine</artifactId>
-            <version>23.0.1</version>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+<!--        <dependency>
+            <groupId>org.camunda.bpm.extension</groupId>
+            <artifactId>camunda-bpm-process-test-coverage</artifactId>
+            <version>0.4.0</version>
+            <scope>test</scope>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.camunda.community.process_test_coverage</groupId>
+            <artifactId>camunda-process-test-coverage-junit5-platform-7</artifactId>
+            <version>2.1.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- java util logging => slf4j -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -151,23 +160,19 @@
             <artifactId>camunda-bpm-junit5</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.10.0</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.camunda.bpm.extension</groupId>
-            <artifactId>camunda-bpm-process-test-coverage-junit5</artifactId>
-            <version>1.0.3</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
+
+<!--        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
 
         <!-- Camunda mocking framework -->
 <!--        <dependency>

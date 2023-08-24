@@ -1,5 +1,6 @@
 package org.camunda.bpm.developers;
 
+import org.assertj.core.api.Assertions;
 import org.camunda.bpm.developers.delegate.SendRejectionNotificationDelegate;
 import org.camunda.bpm.developers.service.EmailService;
 import org.camunda.bpm.engine.ProcessEngine;
@@ -19,21 +20,25 @@ import java.util.Map;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 
 /**
- * JUnit5 process/ BPMN test of process version 2 "c7-anti-agile-tweet-v2.bpmn".
+ * JUnit5 process/ BPMN test of process version 3 "c7-anti-agile-tweet-v3.bpmn".
  * With Service Tasks.
- * No extra transaction boundaries or timer events.
+ * With extra transaction boundaries and timer events.
  * "Happy Path" and "Tweet Rejection Path".
  * Test Coverage integrated.
  */
 @ExtendWith(ProcessEngineCoverageExtension.class)
-@Deployment(resources = "c7-anti-agile-tweet-v2.bpmn")
-public class ProcessTestReviewTweetV3 {
+@Deployment(resources = "c7-anti-agile-tweet-v3.bpmn")
+public class ProcessTestReviewTweetV4 {
 
     public ProcessEngine processEngine;
-    private static final String PROCESS_DEFINITION_KEY = "AntiAgileTweetProcessV2";
+    private static final String PROCESS_DEFINITION_KEY = "AntiAgileTweetProcessV3";
+    public static final String START_EVENT_TWEET_RECEIVED = "StartEvent_TweetReceived";
     public static final String TASK_REVIEW_TWEET = "Task_ReviewTweet";
+    public static final String SERVICE_TASK_PUBLISH_TWEET = "Task_PublishOnTwitter";
+    public static final String SERVICE_TASK_NOTIFY_EMPLOYEE= "Task_NotifyEmployeeRejection";
     public static final String END_EVENT_TWEET_PUBLISHED = "EndEvent_TweetPublished";
     public static final String END_EVENT_TWEET_REJECTED = "EndEvent_TweetRejected";
 
@@ -54,13 +59,32 @@ public class ProcessTestReviewTweetV3 {
     public void testHappyPath() {
         // Create a HashMap to put in variables for the process instance
         Map<String, Object> variables = new HashMap<String, Object>();
-        variables.put("content", "Testing process v2!");
+        variables.put("content", "Tweet content: Testing process v3!");
         variables.put("approved", true);
         // Start process with Java API and variables
         final ProcessInstance processInstance = runtimeService().startProcessInstanceByKey(PROCESS_DEFINITION_KEY, variables);
 
+        // Make assertions on the process instance
+        assertThat(processInstance).isStarted();
+        assertThat(processInstance).isActive();
+        // And it should be the only instance
+        Assertions.assertThat(processInstanceQuery().count()).isEqualTo(1);
+        assertThat(processInstance)
+                .hasVariables("content");
+        // execute the transaction boundary or wait state at the start event
+        assertThat(processInstance).isWaitingAt(START_EVENT_TWEET_RECEIVED);
+        execute(job());
+
+        assertThat(processInstance).isWaitingAt(TASK_REVIEW_TWEET);
         // complete task
         complete(task(processInstance));
+
+        assertThat(processInstance).isWaitingAt(SERVICE_TASK_PUBLISH_TWEET);
+        execute(job());
+
+        // timer event
+        assertThat(processInstance).job("TimerEvent_A");
+        execute(job());
 
         // Make assertions on the process instance
         assertThat(processInstance).hasPassed(END_EVENT_TWEET_PUBLISHED).isEnded();
@@ -80,7 +104,7 @@ public class ProcessTestReviewTweetV3 {
 
         // Create a HashMap to put in variables for the process instance
         Map<String, Object> variables = new HashMap<String, Object>();
-        variables.put("content", "My first tweet about JUnit Testing");
+        variables.put("content", "Tweet content: Testing process v3!");
         variables.put("employee", "Sarah");
         variables.put("rejectionReason", "tweet does not look good");
         variables.put("approved",false);
@@ -93,6 +117,16 @@ public class ProcessTestReviewTweetV3 {
 
         // Make assertions on the process instance
         assertThat(processInstance).isStarted();
+
+        assertThat(processInstance).isWaitingAt(SERVICE_TASK_NOTIFY_EMPLOYEE);
+        execute(job());
+        assertThat(processInstance)
+                .hasVariables("message","emailId");
+        Mockito.verify(mockEmailService).sendEmail(eq("Sarah"), anyString(), anyString());
+
+        // timer event
+        assertThat(processInstance).job("TimerEvent_B");
+        execute(job());
 
         assertThat(processInstance).hasPassed(END_EVENT_TWEET_REJECTED).isEnded();
     }

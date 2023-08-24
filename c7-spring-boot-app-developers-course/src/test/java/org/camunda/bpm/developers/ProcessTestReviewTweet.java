@@ -3,16 +3,15 @@ package org.camunda.bpm.developers;
 import org.assertj.core.api.Assertions;
 import org.camunda.bpm.developers.delegate.SendRejectionNotificationDelegate;
 import org.camunda.bpm.developers.service.EmailService;
-import org.camunda.bpm.engine.ProcessEngineConfiguration;
+import org.camunda.bpm.engine.ProcessEngine;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
 import org.camunda.bpm.engine.test.Deployment;
+import org.camunda.bpm.engine.test.assertions.ProcessEngineTests;
 import org.camunda.bpm.engine.test.mock.Mocks;
-import org.camunda.bpm.extension.process_test_coverage.junit.rules.ProcessCoverageInMemProcessEngineConfiguration;
-import org.camunda.bpm.extension.process_test_coverage.junit5.ProcessEngineCoverageExtension;
+import org.camunda.community.process_test_coverage.junit5.platform7.ProcessEngineCoverageExtension;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import java.util.HashMap;
@@ -21,20 +20,23 @@ import java.util.Map;
 
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.assertThat;
-import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 
-import org.camunda.bpm.extension.process_test_coverage.junit.rules.TestCoverageProcessEngineRuleBuilder;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
-import javax.validation.constraints.Email;
-
-@ExtendWith(ProcessEngineCoverageExtension.class)
+/**
+ * JUnit5 process/ BPMN test of process version 3 "c7-anti-agile-tweet-v3.bpmn".
+ * With Service Tasks.
+ * With extra transaction boundaries and timer events.
+ * "Happy Path" and "Tweet Rejection Path".
+ * Test Coverage integrated.
+ */
+//@ExtendWith(ProcessEngineCoverageExtension.class)
 @Deployment(resources = "c7-anti-agile-tweet.bpmn")
 public class ProcessTestReviewTweet {
 
+    public ProcessEngine processEngine;
     private static final String PROCESS_DEFINITION_KEY = "AntiAgileTweetProcess";
     public static final String START_EVENT_TWEET_RECEIVED = "StartEvent_TweetReceived";
     public static final String TASK_REVIEW_TWEET = "Task_ReviewTweet";
@@ -42,23 +44,16 @@ public class ProcessTestReviewTweet {
     public static final String SERVICE_TASK_NOTIFY_EMPLOYEE= "Task_NotifyEmployeeRejection";
     public static final String END_EVENT_TWEET_PUBLISHED = "EndEvent_TweetPublished";
     public static final String END_EVENT_TWEET_REJECTED = "EndEvent_TweetRejected";
-
-/*    @RegisterExtension
-    public static ProcessEngineExtension extension = ProcessEngineExtension.builder()
-            .build();*/
+    public static final String END_EVENT_TWEET_WITHDRAWN = "EndEvent_TweetWithdrawn";
 
     // Use the @RegisterExtension to create a referenceable ProcessEngineExtension object which gives you access to more configuration options.
     @RegisterExtension
-//    public static ProcessEngineCoverageExtension extension = ProcessEngineExtensionProvider.extension;
     public static ProcessEngineCoverageExtension extension = ProcessEngineCoverageExtension
-            .builder().assertClassCoverageAtLeast(0.1).build();
-
-    @Mock
-    private EmailService emailService;
+            .builder().assertClassCoverageAtLeast(0.9).build();
 
     @BeforeEach
     public void setup() {
-        init(extension.getProcessEngine());
+        ProcessEngineTests.init(processEngine);
     }
 
     /**
@@ -70,24 +65,8 @@ public class ProcessTestReviewTweet {
     }
 
     @Test
-    public void testHappyPath() {
-        // Create a HashMap to put in variables for the process instance
-        Map<String, Object> variables = new HashMap<String, Object>();
-        variables.put("content", "My first tweet about JUnit Testing");
-        variables.put("approved", true);
-        // Start process with Java API and variables
-        ProcessInstance processInstance = runtimeService().startProcessInstanceByKey(PROCESS_DEFINITION_KEY, variables);
-
-        // complete task
-        complete(task(processInstance));
-
-        // Make assertions on the process instance
-        assertThat(processInstance).isEnded();
-    }
-
-    @Test
 //    @Deployment(resources = "c7-anti-agil-tweet.bpmn")
-    public void testHappyPathExtended() {
+    public void testHappyPath() {
         // Create a HashMap to put in variables for the process instance
         Map<String, Object> variables = new HashMap<String, Object>();
         variables.put("content", "My first tweet about JUnit Testing");
@@ -210,7 +189,34 @@ public class ProcessTestReviewTweet {
         assertThat(processInstance).hasPassed(END_EVENT_TWEET_PUBLISHED).isEnded();
     }
 
+    @Test
+    public void testTweetWithdrawn() {
+        // Create a HashMap to put in variables for the process instance
+        Map<String, Object> variables = new HashMap<String, Object>();
+        variables.put("content", "My Exercise 11 Tweet withdrawn - Sven Kaiser - " + System.currentTimeMillis());
+        // Start process with Java API and variables
+        final ProcessInstance processInstance = runtimeService().startProcessInstanceByKey(PROCESS_DEFINITION_KEY, variables);
 
+        assertThat(processInstance).isStarted();
+
+        // execute the transaction boundary or wait state at the start event
+        assertThat(processInstance).isWaitingAt(START_EVENT_TWEET_RECEIVED);
+        execute(job());
+
+        assertThat(processInstance).isWaitingAt(TASK_REVIEW_TWEET);
+
+        // trigger message intermediate catch event
+        runtimeService()
+                .createMessageCorrelation("tweetWithdrawn")
+                .correlateWithResult()
+                .getProcessInstance();
+
+        // timer event
+        assertThat(processInstance).job("TimerEvent_C");
+        execute(job());
+
+        assertThat(processInstance).hasPassed(END_EVENT_TWEET_WITHDRAWN).isEnded();
+    }
 
     // works and can be used if one is interested
 /*    private ProcessInstance startProcess() {

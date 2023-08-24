@@ -2,9 +2,10 @@ package org.camunda.bpm.developers;
 
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.test.Deployment;
-import org.camunda.bpm.engine.test.junit5.ProcessEngineExtension;
+import org.camunda.community.process_test_coverage.junit5.platform7.ProcessEngineCoverageExtension;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.extension.RegisterExtension;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,12 +16,17 @@ import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.assertT
  * JUnit5 process/ BPMN test of process version 1 "c7-anti-agile-tweet-v1.bpmn" reduced to a small simple test.
  * No Service Tasks.
  * No extra transaction boundaries or timer events.
+ * Only "Happy Path".
  */
-@ExtendWith(ProcessEngineExtension.class)
+//@ExtendWith(ProcessEngineExtension.class)
 @Deployment(resources = "c7-anti-agile-tweet-v1.bpmn")
 public class ProcessTestReviewTweetV1 {
 
     private static final String PROCESS_DEFINITION_KEY = "AntiAgileTweetProcessV1";
+
+    @RegisterExtension
+    static ProcessEngineCoverageExtension extension = ProcessEngineCoverageExtension
+            .builder().build();
 
     /**
      * Just tests if the process definition is deployable.

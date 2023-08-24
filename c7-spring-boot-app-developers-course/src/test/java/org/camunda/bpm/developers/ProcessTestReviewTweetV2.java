@@ -4,10 +4,10 @@ import org.camunda.bpm.developers.delegate.SendRejectionNotificationDelegate;
 import org.camunda.bpm.developers.service.EmailService;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.test.Deployment;
-import org.camunda.bpm.engine.test.junit5.ProcessEngineExtension;
 import org.camunda.bpm.engine.test.mock.Mocks;
+import org.camunda.community.process_test_coverage.junit5.platform7.ProcessEngineCoverageExtension;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.extension.RegisterExtension;
 import org.mockito.Mockito;
 
 import java.util.HashMap;
@@ -21,8 +21,9 @@ import static org.mockito.ArgumentMatchers.anyString;
  * JUnit5 process/ BPMN test of process version 2 "c7-anti-agile-tweet-v2.bpmn".
  * With Service Tasks.
  * No extra transaction boundaries or timer events.
+ * "Happy Path" and "Tweet Rejection Path".
  */
-@ExtendWith(ProcessEngineExtension.class)
+//@ExtendWith(ProcessEngineExtension.class)
 @Deployment(resources = "c7-anti-agile-tweet-v2.bpmn")
 public class ProcessTestReviewTweetV2 {
 
@@ -30,6 +31,10 @@ public class ProcessTestReviewTweetV2 {
     public static final String TASK_REVIEW_TWEET = "Task_ReviewTweet";
     public static final String END_EVENT_TWEET_PUBLISHED = "EndEvent_TweetPublished";
     public static final String END_EVENT_TWEET_REJECTED = "EndEvent_TweetRejected";
+
+    @RegisterExtension
+    static ProcessEngineCoverageExtension extension = ProcessEngineCoverageExtension
+            .builder().build();
 
     /**
      * Just tests if the process definition is deployable.

@@ -195,7 +195,8 @@ public class ProcessTestReviewTweet {
         Map<String, Object> variables = new HashMap<String, Object>();
         variables.put("content", "My Exercise 11 Tweet withdrawn - Sven Kaiser - " + System.currentTimeMillis());
         // Start process with Java API and variables
-        final ProcessInstance processInstance = runtimeService().startProcessInstanceByKey(PROCESS_DEFINITION_KEY, variables);
+        final ProcessInstance processInstance = runtimeService()
+                .startProcessInstanceByKey(PROCESS_DEFINITION_KEY, variables);
 
         assertThat(processInstance).isStarted();
 

@@ -15,6 +15,7 @@
     <module>c7-spring-boot-app-experiments</module>
       <module>c7-spring-boot-app-developers-course</module>
       <module>c7-notification-worker</module>
+      <module>c7-spring-boot-app-devops</module>
   </modules>
 
   <properties>

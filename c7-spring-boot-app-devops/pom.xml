@@ -7,10 +7,11 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>c7-spring-boot-application-getstarted</artifactId>
+    <groupId>org.camunda.bpm.devops</groupId>
+    <artifactId>c7-spring-boot-app-devops</artifactId>
     <packaging>jar</packaging>
 
-    <name>c7-spring-boot-application</name>
+    <name>c7-spring-boot-app-devops</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -18,6 +19,7 @@
 
         <camunda.spring-boot.version>7.19.0</camunda.spring-boot.version>
         <spring-boot.version>2.7.10</spring-boot.version>
+
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
@@ -42,6 +44,7 @@
     </dependencyManagement>
 
     <dependencies>
+
         <dependency>
             <groupId>org.camunda.bpm.springboot</groupId>
             <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
@@ -51,14 +54,10 @@
         <dependency>
             <groupId>org.camunda.bpm.springboot</groupId>
             <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
+<!--            <version>${camunda.spring-boot.version}</version>-->
         </dependency>
 
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
-
-        <!-- required to use H2 as a file based database  (otherwise it's in-memory) -->
+        <!--  -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
@@ -75,61 +74,28 @@
             <artifactId>camunda-engine-plugin-spin</artifactId>
         </dependency>
 
-        <!-- JAXB -->
+        <!-- database -->
         <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>2.3.6</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.vaadin.external.google</groupId>
-            <artifactId>android-json</artifactId>
-            <version>0.0.20131108.vaadin1</version>
-            <scope>compile</scope>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
         </dependency>
 
         <!-- test scope -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
 
-        <dependency>
+<!--        <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.camunda.bpm</groupId>
-            <artifactId>camunda-bpm-junit5</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.camunda.bpm</groupId>
-            <artifactId>camunda-bpm-assert</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- java util logging => slf4j -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jul-to-slf4j</artifactId>
-            <scope>test</scope>
-        </dependency>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>3.1.2</version>
+            <scope>compile</scope>
+        </dependency>-->
 
     </dependencies>
-
 
     <build>
         <plugins>
@@ -165,4 +131,5 @@
 
         </plugins>
     </build>
+
 </project>

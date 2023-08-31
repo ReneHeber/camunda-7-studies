@@ -1,0 +1,10 @@
+services:
+  db:
+    build: ./postgres-camunda-ee
+    container_name: "postgres-db-devops_con"
+    environment:
+      POSTGRES_DB: camunda
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - 5432:5432

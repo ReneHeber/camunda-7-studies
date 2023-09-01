@@ -1,32 +1,67 @@
-#spring:
-#  datasource:
-#    url: jdbc:h2:tcp://localhost/~/camunda-training;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-#    username: sa
-#    password:
+server:
+  port: 8090
 
-spring.datasource:
-#  url: jdbc:h2:mem:camunda-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-  url: jdbc:postgresql://localhost:5342/postgres-DB-devops
-  #shareable h2 database: jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE
-  username: admin
-  password: admin
-#spring.h2.console.enabled: true
+spring:
+  application:
+    name: camundapostgres
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5342/camunda
+    username: admin
+    password: admin
+
+  hikari:
+    jdbc-url: jdbc:postgresql://localhost:5432/camunda
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+    pool-name: CAMUNDA-HIKARI-POOL
+    idle-timeout: 3000
+    minimum-idle: 30
+    maximum-pool-size: 10
+    connection-timeout: 2000
+    connection-test-query: select 1
+    transaction-isolation: TRANSACTION_READ_COMMITTED
 
 camunda:
   bpm:
-    database.schema-update: false
-    job-execution:
-      deployment-aware: true
+    enabled: true
+
     admin-user:
       id: d
       password: d
-      firstName: Demo
+      firstName: Sarah
+      lastName: Kaiser
+
+    database:
+      schema-update: true
+
     filter:
       create: All tasks
 
-spring:
-  jpa:
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgresQLDialect
+    authorization:
+      enabled: true
+
+    history-level: full
+
+    auto-deployment-enabled: true
+
+    default-number-of-retries: 3
+
+    job-execution:
+      enabled: true
+
+    webapp:
+      application-path: /camundapostgres
+
+
+
+
+
+
+
+

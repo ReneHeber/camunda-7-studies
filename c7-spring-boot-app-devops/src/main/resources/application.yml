@@ -1,5 +1,5 @@
 server:
-  port: 8090
+  port: 8080
 
 spring:
   application:
@@ -14,18 +14,18 @@ spring:
     username: admin
     password: admin
 
-  hikari:
-    jdbc-url: jdbc:postgresql://localhost:5432/camunda
-    username: admin
-    password: admin
-    driver-class-name: org.postgresql.Driver
-    pool-name: CAMUNDA-HIKARI-POOL
-    idle-timeout: 3000
-    minimum-idle: 30
-    maximum-pool-size: 10
-    connection-timeout: 2000
-    connection-test-query: select 1
-    transaction-isolation: TRANSACTION_READ_COMMITTED
+    hikari:
+      jdbc-url: jdbc:postgresql://localhost:5432/camunda
+      username: admin
+      password: admin
+      driver-class-name: org.postgresql.Driver
+      pool-name: CAMUNDA-HIKARI-POOL
+      idle-timeout: 3000
+      minimum-idle: 30
+      maximum-pool-size: 10
+      connection-timeout: 2000
+      connection-test-query: select 1
+      transaction-isolation: TRANSACTION_READ_COMMITTED
 
 camunda:
   bpm:
@@ -57,11 +57,3 @@ camunda:
 
     webapp:
       application-path: /camundapostgres
-
-
-
-
-
-
-
-

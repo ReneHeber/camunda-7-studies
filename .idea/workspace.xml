@@ -4,16 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bc4d672-731c-4bd7-8182-4cd749b9b306" name="Changes" comment="Human Tasks">
-      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/java/org/camunda/bpm/developers/service/EmailService.java" afterDir="false" />
+    <list default="true" id="0bc4d672-731c-4bd7-8182-4cd749b9b306" name="Changes" comment="Changing dependencies">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/7f16c449-2b32-4669-8efc-bfc8524af295.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/7f16c449-2b32-4669-8efc-bfc8524af295/storage_v2/_src_/database/CAMUNDA-DB.RnK77A.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/7f16c449-2b32-4669-8efc-bfc8524af295/storage_v2/_src_/database/CAMUNDA-DB.RnK77A/schema/INFORMATION_SCHEMA.NBgcMw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/7f16c449-2b32-4669-8efc-bfc8524af295/storage_v2/_src_/database/CAMUNDA-DB.RnK77A/schema/PUBLIC.aaZQjQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/java/org/camunda/bpm/developers/CamundaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/java/org/camunda/bpm/developers/CamundaApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/java/org/camunda/bpm/developers/delegate/CreateTweetDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/java/org/camunda/bpm/developers/delegate/CreateTweetDelegate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/java/org/camunda/bpm/developers/delegate/SendRejectionNotificationDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/java/org/camunda/bpm/developers/delegate/SendRejectionNotificationDelegate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/resources/c7-anti-agil-tweet-v1.bpmn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/resources/c7-anti-agil-tweet.bpmn" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/test/java/org/camunda/bpm/developers/ProcessTestReviewTweet.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/test/java/org/camunda/bpm/developers/ProcessTestReviewTweet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-devops/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-devops/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose-c7-devops.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose-c7-devops.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +27,7 @@
       <list>
         <option value="HTML File" />
         <option value="Class" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
@@ -54,17 +57,23 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "C:/Users/rhe/Documents/Studies/Camunda 7/camunda-7-studies/c7-spring-boot-app-developers-course/src/test/resources",
+    "last_opened_file_path": "C:/Users/rhe/Documents/Studies/Camunda 7/c7-camunda-spring-boot-application",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.31494254",
-    "settings.editor.selected.configurable": "preferences.customizations",
-    "spring.configuration.checksum": "ee20a8fbef656aee7421d9d2b7d68890",
+    "settings.editor.selected.configurable": "project.propGUI",
+    "spring.configuration.checksum": "44a637e190d9ba9928f5675007700ba3",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "h2",
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -74,6 +83,7 @@
       <recent name="C:\Users\rhe\Documents\Studies\Camunda 7\camunda-7-studies\c7-spring-boot-app-experiments\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rhe\Documents\Studies\Camunda 7\camunda-7-studies\c7-postgres-db-devops\postgres-camunda-ee" />
       <recent name="C:\Users\rhe\Documents\Studies\Camunda 7\camunda-7-studies\c7-spring-boot-app-developers-course\src\main\resources" />
       <recent name="C:\Users\rhe\Documents\Studies\Camunda 7\camunda-7-studies" />
     </key>
@@ -82,87 +92,7 @@
       <recent name="org.camunda.bpm.experiments.delegate" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ProcessTestReviewTweet.testTweetRejection">
-    <configuration name="ProcessTestReviewTweet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="c7-spring-boot-app-developers-course" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.camunda.bpm.developers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.camunda.bpm.developers" />
-      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.developers.ProcessTestReviewTweet" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProcessTestReviewTweet.testDeployment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="c7-spring-boot-app-developers-course" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.camunda.bpm.developers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.camunda.bpm.developers" />
-      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.developers.ProcessTestReviewTweet" />
-      <option name="METHOD_NAME" value="testDeployment" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProcessTestReviewTweet.testHappyPath" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="c7-spring-boot-app-developers-course" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.camunda.bpm.developers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.camunda.bpm.developers" />
-      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.developers.ProcessTestReviewTweet" />
-      <option name="METHOD_NAME" value="testHappyPath" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProcessTestReviewTweet.testHappyPathExtended" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="c7-spring-boot-app-developers-course" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.camunda.bpm.developers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.camunda.bpm.developers" />
-      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.developers.ProcessTestReviewTweet" />
-      <option name="METHOD_NAME" value="testHappyPathExtended" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProcessTestReviewTweet.testTweetRejection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="c7-spring-boot-app-developers-course" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.camunda.bpm.developers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.camunda.bpm.developers" />
-      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.developers.ProcessTestReviewTweet" />
-      <option name="METHOD_NAME" value="testTweetRejection" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Spring Boot.CamundaApplication (3)">
     <configuration name="CamundaApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="c7-spring-boot-app-experiments" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.camunda.bpm.experiments.CamundaApplication" />
@@ -177,6 +107,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CamundaApplication (3)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="c7-spring-boot-app-devops" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.camunda.bpm.devops.CamundaApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.camunda.bpm.devops.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CamundaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="c7-spring-boot-application-getstarted" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.camunda.bpm.experiments.CamundaApplication" />
@@ -184,13 +127,72 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PostgresQL-DB devops" type="docker-deploy" factoryName="docker-image" temporary="true" server-name="Docker">
+      <deployment type="docker-image">
+        <settings>
+          <option name="imageTag" value="postgres:latest" />
+          <option name="containerName" value="postgresql-db-devops" />
+          <option name="envVars">
+            <list>
+              <DockerEnvVarImpl>
+                <option name="name" value="POSTGRES_HOST_AUTH_METHOD" />
+                <option name="value" value="trust" />
+              </DockerEnvVarImpl>
+            </list>
+          </option>
+          <option name="publishAllPorts" value="true" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-image" temporary="true">
+      <deployment type="docker-image">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="c7-postgres-db-devops/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="c7-postgres-db-devops/docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose-c7-devops.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose-c7-devops.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose-c7-devops.yaml.db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="db" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose-c7-devops.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProcessTestReviewTweet.testTweetRejection" />
-        <item itemvalue="JUnit.ProcessTestReviewTweet" />
-        <item itemvalue="JUnit.ProcessTestReviewTweet.testHappyPathExtended" />
-        <item itemvalue="JUnit.ProcessTestReviewTweet.testHappyPath" />
-        <item itemvalue="JUnit.ProcessTestReviewTweet.testDeployment" />
+        <item itemvalue="Spring Boot.CamundaApplication (3)" />
+        <item itemvalue="Docker.c7-postgres-db-devops/docker-compose.yaml: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose-c7-devops.yaml: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose-c7-devops.yaml.db: Compose Deployment" />
+        <item itemvalue="Docker.PostgresQL-DB devops" />
       </list>
     </recent_temporary>
   </component>
@@ -205,7 +207,24 @@
       <workItem from="1691756885809" duration="7615000" />
       <workItem from="1692006645558" duration="5038000" />
       <workItem from="1692080488418" duration="20852000" />
-      <workItem from="1692167211114" duration="15073000" />
+      <workItem from="1692167211114" duration="15520000" />
+      <workItem from="1692252795202" duration="8611000" />
+      <workItem from="1692339349319" duration="10557000" />
+      <workItem from="1692597992116" duration="6522000" />
+      <workItem from="1692685700192" duration="5348000" />
+      <workItem from="1692771607349" duration="13963000" />
+      <workItem from="1692858446483" duration="10001000" />
+      <workItem from="1693208285294" duration="8806000" />
+      <workItem from="1693289499625" duration="3485000" />
+      <workItem from="1693376435644" duration="4947000" />
+      <workItem from="1693462751129" duration="9891000" />
+      <workItem from="1693548424295" duration="7334000" />
+      <workItem from="1694422841840" duration="6079000" />
+      <workItem from="1694500723440" duration="1199000" />
+      <workItem from="1695017170526" duration="4237000" />
+      <workItem from="1695104197726" duration="1263000" />
+      <workItem from="1695220440191" duration="599000" />
+      <workItem from="1695297031491" duration="1735000" />
     </task>
     <task id="LOCAL-00001" summary="Adding experimenting spring boot app">
       <created>1691764757023</created>
@@ -235,7 +254,98 @@
       <option name="project" value="LOCAL" />
       <updated>1692179730672</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="JUnit testing with transactions">
+      <created>1692197703348</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1692197703348</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Implementation external task worker">
+      <created>1692282644859</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1692282644859</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Adding test classes">
+      <created>1692625149106</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1692625149106</updated>
+    </task>
+    <task id="LOCAL-00008" summary="New process with error handling">
+      <created>1692800701785</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1692800701785</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Correcting JUnit5 test coverages - especially dependencies">
+      <created>1692888261300</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1692888261300</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Correcting JUnit5 test coverages - especially dependencies">
+      <created>1692888277046</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1692888277046</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Correcting JUnit5 test coverages - especially dependencies">
+      <created>1692888500258</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1692888500258</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Testing DMN">
+      <created>1693233080829</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1693233080829</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Testing DMN">
+      <created>1693233131946</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1693233131946</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Creating new module">
+      <created>1693320258732</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1693320258732</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Commit test">
+      <created>1693404362040</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1693404362040</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Dockerized postgres db with Camunda tables">
+      <created>1693494779448</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1693494779448</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Changing dependencies">
+      <created>1693573190067</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1693573190067</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,6 +367,27 @@
     <MESSAGE value="Adding module spring boot app for developers course" />
     <MESSAGE value="JUnit testing of bpmn processes" />
     <MESSAGE value="Human Tasks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Human Tasks" />
+    <MESSAGE value="JUnit testing with transactions" />
+    <MESSAGE value="Implementation external task worker" />
+    <MESSAGE value="Adding test classes" />
+    <MESSAGE value="New process with error handling" />
+    <MESSAGE value="Correcting JUnit5 test coverages - especially dependencies" />
+    <MESSAGE value="Testing DMN" />
+    <MESSAGE value="Creating new module" />
+    <MESSAGE value="Commit test" />
+    <MESSAGE value="Dockerized postgres db with Camunda tables" />
+    <MESSAGE value="Changing dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changing dependencies" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="this" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

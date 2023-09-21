@@ -1,10 +1,23 @@
 services:
   db:
     build: ./postgres-camunda-ee
-    container_name: "postgres-db-devops_con"
+    container_name: "postgres-db-devops"
     environment:
       POSTGRES_DB: camunda
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
     ports:
       - 5432:5432
+  camunda:
+    image: camunda/camunda-bpm-platform:latest
+    container_name: "camunda-devops"
+    depends_on:
+      - db
+    environment:
+      - DB_DRIVER=org.postgresql.Driver
+      - DB_URL=jdbc:postgresql://db:5432/camunda
+      - DB_USERNAME=admin
+      - DB_PASSWORD=admin
+      - WAIT_FOR=db:5432
+    ports:
+      - 8080:8080

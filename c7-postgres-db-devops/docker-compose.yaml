@@ -8,9 +8,12 @@ services:
       POSTGRES_PASSWORD: admin
     ports:
       - 5432:5432
+    volumes:
+      - postgres-db-devops-data:/var/lib/postgresql/data
   camunda:
-    image: camunda/camunda-bpm-platform:latest
-    container_name: "camunda-devops"
+#    image: camunda/camunda-bpm-platform:run-latest
+    build: ./camunda-bpm-platform
+    container_name: "camunda-devops-my-own-c7-app"
     depends_on:
       - db
     environment:
@@ -21,3 +24,6 @@ services:
       - WAIT_FOR=db:5432
     ports:
       - 8080:8080
+
+volumes:
+  postgres-db-devops-data:

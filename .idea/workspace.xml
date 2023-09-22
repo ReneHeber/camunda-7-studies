@@ -4,18 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bc4d672-731c-4bd7-8182-4cd749b9b306" name="Changes" comment="Changing dependencies">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/7f16c449-2b32-4669-8efc-bfc8524af295.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/7f16c449-2b32-4669-8efc-bfc8524af295/storage_v2/_src_/database/CAMUNDA-DB.RnK77A.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/7f16c449-2b32-4669-8efc-bfc8524af295/storage_v2/_src_/database/CAMUNDA-DB.RnK77A/schema/INFORMATION_SCHEMA.NBgcMw.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/7f16c449-2b32-4669-8efc-bfc8524af295/storage_v2/_src_/database/CAMUNDA-DB.RnK77A/schema/PUBLIC.aaZQjQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="0bc4d672-731c-4bd7-8182-4cd749b9b306" name="Changes" comment="Docker Camunda trial">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-devops/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-devops/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose-c7-devops.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose-c7-devops.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/camunda-bpm-platform/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/c7-postgres-db-devops/camunda-bpm-platform/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/.dockerignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/.github/workflows/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/.github/workflows/build-and-test-ee.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/.github/workflows/build-test-and-publish-ce.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/camunda-run.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/camunda-tomcat.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/camunda-wildfly.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/download.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/pipeline.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/release.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/test/db-password.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/test/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/test/test-debug.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/test/test-prometheus-jmx-run.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/test/test-prometheus-jmx-tomcat.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/test/test-prometheus-jmx-wildfly.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/test/test-run.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/test/test-tomcat.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/test/test-wildfly.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/test/test.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/test/testEncoding.bpmn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-camunda-bpm-platform-next/test/test_helper.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-postgres-db-devops/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/c7-postgres-db-devops/docker-compose.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +76,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "C:/Users/rhe/Documents/Studies/Camunda 7/c7-camunda-spring-boot-application",
+    "last_opened_file_path": "C:/Users/rhe/Documents/Studies/Camunda 7/camunda-testing-examples",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -92,7 +111,7 @@
       <recent name="org.camunda.bpm.experiments.delegate" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.CamundaApplication (3)">
+  <component name="RunManager" selected="Docker.c7-postgres-db-devops/docker-compose.yaml: Compose Deployment">
     <configuration name="CamundaApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="c7-spring-boot-app-experiments" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.camunda.bpm.experiments.CamundaApplication" />
@@ -127,24 +146,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PostgresQL-DB devops" type="docker-deploy" factoryName="docker-image" temporary="true" server-name="Docker">
-      <deployment type="docker-image">
-        <settings>
-          <option name="imageTag" value="postgres:latest" />
-          <option name="containerName" value="postgresql-db-devops" />
-          <option name="envVars">
-            <list>
-              <DockerEnvVarImpl>
-                <option name="name" value="POSTGRES_HOST_AUTH_METHOD" />
-                <option name="value" value="trust" />
-              </DockerEnvVarImpl>
-            </list>
-          </option>
-          <option name="publishAllPorts" value="true" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -157,10 +158,37 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration name="c7-postgres-db-devops/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="sourceFilePath" value="c7-postgres-db-devops/docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="c7-postgres-db-devops/docker-compose.yaml.camunda: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="camunda" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="c7-postgres-db-devops/docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="camunda-bpm-platform/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="c7-postgres-db-devops/camunda-bpm-platform/Dockerfile" />
         </settings>
       </deployment>
       <method v="2" />
@@ -173,26 +201,13 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker-compose-c7-devops.yaml.db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="db" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docker-compose-c7-devops.yaml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.CamundaApplication (3)" />
         <item itemvalue="Docker.c7-postgres-db-devops/docker-compose.yaml: Compose Deployment" />
+        <item itemvalue="Docker.c7-postgres-db-devops/docker-compose.yaml.camunda: Compose Deployment" />
         <item itemvalue="Docker.docker-compose-c7-devops.yaml: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose-c7-devops.yaml.db: Compose Deployment" />
-        <item itemvalue="Docker.PostgresQL-DB devops" />
+        <item itemvalue="Docker.camunda-bpm-platform/Dockerfile" />
+        <item itemvalue="Spring Boot.CamundaApplication (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -224,7 +239,9 @@
       <workItem from="1695017170526" duration="4237000" />
       <workItem from="1695104197726" duration="1263000" />
       <workItem from="1695220440191" duration="599000" />
-      <workItem from="1695297031491" duration="1735000" />
+      <workItem from="1695297031491" duration="4149000" />
+      <workItem from="1695365694400" duration="3283000" />
+      <workItem from="1695369014333" duration="2442000" />
     </task>
     <task id="LOCAL-00001" summary="Adding experimenting spring boot app">
       <created>1691764757023</created>
@@ -345,7 +362,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693573190067</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Docker Camunda trial">
+      <created>1695305499227</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1695305499227</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -377,7 +401,8 @@
     <MESSAGE value="Commit test" />
     <MESSAGE value="Dockerized postgres db with Camunda tables" />
     <MESSAGE value="Changing dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changing dependencies" />
+    <MESSAGE value="Docker Camunda trial" />
+    <option name="LAST_COMMIT_MESSAGE" value="Docker Camunda trial" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

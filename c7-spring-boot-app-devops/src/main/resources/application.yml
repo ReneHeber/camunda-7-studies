@@ -10,14 +10,14 @@ spring:
 
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5342/camunda
-    username: admin
-    password: admin
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
 
     hikari:
-      jdbc-url: jdbc:postgresql://localhost:5432/camunda
-      username: admin
-      password: admin
+      jdbc-url: ${DB_URL}
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
       driver-class-name: org.postgresql.Driver
       pool-name: CAMUNDA-HIKARI-POOL
       idle-timeout: 3000

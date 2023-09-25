@@ -11,8 +11,7 @@ services:
     volumes:
       - postgres-db-devops-data:/var/lib/postgresql/data
   camunda:
-#    image: camunda/camunda-bpm-platform:run-latest
-    build: ./camunda-bpm-platform
+    image: c7-devops-app:latest
     container_name: "camunda-devops-my-own-c7-app"
     depends_on:
       - db

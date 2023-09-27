@@ -7,10 +7,11 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>c7-spring-boot-app-developers-course</artifactId>
+    <groupId>org.camunda.bpm.micro</groupId>
+    <artifactId>c7-spring-boot-app-micro</artifactId>
     <packaging>jar</packaging>
 
-    <name>c7-spring-boot-app-developers-course</name>
+    <name>c7-spring-boot-app-micro</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -59,17 +60,6 @@
             <artifactId>camunda-engine</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
-
-        <!-- required to use H2 as a file based database  (otherwise it's in-memory) -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
-
         <!-- Required to use Spin dataformat support -->
         <dependency>
             <groupId>org.camunda.spin</groupId>
@@ -79,19 +69,6 @@
         <dependency>
             <groupId>org.camunda.bpm</groupId>
             <artifactId>camunda-engine-plugin-spin</artifactId>
-        </dependency>
-
-        <!-- Move to another JavaScript engine like GraalVM JavaScript -->
-        <!-- https://docs.camunda.org/manual/7.19/update/minor/715-to-716/?__hstc=218867270.3d8e6cf9828b4b52784267f0d38e3698.1689588881414.1692020683985.1692083620859.14&__hssc=218867270.2.1692083620859&__hsfp=1803899855#java-15-and-graalvm-javascript-support-->
-        <dependency>
-            <groupId>org.graalvm.js</groupId>
-            <artifactId>js</artifactId>
-            <version>23.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.graalvm.js</groupId>
-            <artifactId>js-scriptengine</artifactId>
-            <version>23.0.1</version>
         </dependency>
 
         <!-- JAXB -->
@@ -160,15 +137,6 @@
             <version>5.10.0</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- Camunda mocking framework -->
-<!--        <dependency>
-            <groupId>org.camunda.bpm.extension.mockito</groupId>
-            <artifactId>camunda-bpm-mockito</artifactId>
-            <version>5.16.0</version>
-            <scope>test</scope>
-        </dependency>-->
-
     </dependencies>
 
     <build>
@@ -203,7 +171,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M9</version>
             </plugin>
-
         </plugins>
     </build>
 </project>

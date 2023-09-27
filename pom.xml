@@ -18,6 +18,7 @@
       <module>c7-spring-boot-app-devops</module>
 <!--      <module>c7-postgres-db-devops</module>-->
       <module>c7-spring-boot-app-micro</module>
+      <module>c7-worker-deduct-existing-credit</module>
   </modules>
 
   <properties>

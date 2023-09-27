@@ -5,9 +5,9 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 /**
- * Unit test for simple DeductExistingCredit.
+ * Unit test for simple DeductExistingCreditEx4.
  */
-public class DeductExistingCreditTest
+public class DeductExistingCreditEx4Test
     extends TestCase
 {
     /**
@@ -15,7 +15,7 @@ public class DeductExistingCreditTest
      *
      * @param testName name of the test case
      */
-    public DeductExistingCreditTest(String testName )
+    public DeductExistingCreditEx4Test(String testName )
     {
         super( testName );
     }
@@ -25,7 +25,7 @@ public class DeductExistingCreditTest
      */
     public static Test suite()
     {
-        return new TestSuite( DeductExistingCreditTest.class );
+        return new TestSuite( DeductExistingCreditEx4Test.class );
     }
 
     /**

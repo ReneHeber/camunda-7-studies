@@ -2,12 +2,10 @@ package org.camunda.bpm.experiments;
 
 import org.camunda.bpm.client.ExternalTaskClient;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Logger;
 
-public class ChargeCardWorker {
-    private final static Logger LOGGER = Logger.getLogger(ChargeCardWorker.class.getName());
+public class ChargeCardWorkerMicroEx5 {
+    private final static Logger LOGGER = Logger.getLogger(ChargeCardWorkerMicroEx5.class.getName());
 
     public static void main(String[] args) {
         ExternalTaskClient client = ExternalTaskClient.create()
@@ -16,16 +14,16 @@ public class ChargeCardWorker {
                 .build();
 
         // subscribe to an external task topic as specified in the process
-        client.subscribe("charge-card")
+        client.subscribe("charge-credit-card")
                 .lockDuration(1000) // the default lock duration is 20 seconds, but you can override this
                 .handler((externalTask, externalTaskService) -> {
                     // Put your business logic here
 
                     // Get a process variable
-                    String item = externalTask.getVariable("item");
                     Integer amount = externalTask.getVariable("amount");
+                    Integer credit = externalTask.getVariable("credit");
 
-                    LOGGER.info("Charging credit card with an amount of '" + amount + "'€ for the item '" + item + "'...");
+                    LOGGER.info("Charging credit card with an amount of '" + -credit + "€");
 
                     // Complete the task
                     externalTaskService.complete(externalTask);

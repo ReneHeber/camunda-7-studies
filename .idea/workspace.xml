@@ -4,19 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bc4d672-731c-4bd7-8182-4cd749b9b306" name="Changes" comment="New module for c7 micro course">
-      <change afterPath="$PROJECT_DIR$/c7-worker-deduct-existing-credit/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c7-worker-deduct-existing-credit/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c7-worker-deduct-existing-credit/src/main/java/org/camunda/bpm/micro/DeductExistingCredit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c7-worker-deduct-existing-credit/src/test/java/org/camunda/bpm/micro/DeductExistingCreditTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="0bc4d672-731c-4bd7-8182-4cd749b9b306" name="Changes" comment="C7 micro course and external Java worker">
+      <change afterPath="$PROJECT_DIR$/c7-charge-card-worker-getstarted/src/main/java/org/camunda/bpm/experiments/ChargeCardWorkerMicroEx5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex3.bpmn" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex5.bpmn" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c7-worker-deduct-existing-credit/src/main/java/org/camunda/bpm/micro/DeductExistingCreditEx5.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-charge-card-worker-getstarted/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/c7-charge-card-worker-getstarted/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-micro/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/java/org/camunda/bpm/micro/CamundaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/java/org/camunda/bpm/micro/CamundaApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/META-INF/processes.yml" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/META-INF/processes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment.bpmn" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex2.bpmn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-charge-card-worker-getstarted/src/main/java/org/camunda/bpm/experiments/ChargeCardWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-charge-card-worker-getstarted/src/main/java/org/camunda/bpm/experiments/ChargeCardWorker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-worker-deduct-existing-credit/src/main/java/org/camunda/bpm/micro/DeductExistingCredit.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-worker-deduct-existing-credit/src/main/java/org/camunda/bpm/micro/DeductExistingCreditEx4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-worker-deduct-existing-credit/src/test/java/org/camunda/bpm/micro/DeductExistingCreditTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-worker-deduct-existing-credit/src/test/java/org/camunda/bpm/micro/DeductExistingCreditEx4Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,13 +88,28 @@
       <recent name="C:\Users\rhe\Documents\Studies\Camunda 7\camunda-7-studies" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.camunda.bpm.experiments" />
+      <recent name="org.camunda.bpm.micro" />
       <recent name="org.camunda.bpm.developers.delegate" />
       <recent name="org.camunda.bpm.experiments.delegate" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DeductExistingCredit">
-    <configuration name="DeductExistingCredit" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.micro.DeductExistingCredit" />
+  <component name="RunManager" selected="Application.ChargeCardWorker">
+    <configuration name="ChargeCardWorker" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.experiments.ChargeCardWorker" />
+      <module name="c7-charge-card-worker-getstarted" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.camunda.bpm.experiments.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DeductExistingCreditEx4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.micro.DeductExistingCreditEx4" />
       <module name="c7-worker-deduct-existing-credit" />
       <extension name="coverage">
         <pattern>
@@ -185,21 +196,13 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="camunda-bpm-platform/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="sourceFilePath" value="c7-postgres-db-devops/camunda-bpm-platform/Dockerfile" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DeductExistingCredit" />
+        <item itemvalue="Application.ChargeCardWorker" />
+        <item itemvalue="Application.DeductExistingCreditEx4" />
         <item itemvalue="Spring Boot.CamundaApplication (4)" />
         <item itemvalue="Docker.c7-spring-boot-app-devops/Dockerfile" />
         <item itemvalue="Docker.c7-postgres-db-devops/docker-compose.yaml: Compose Deployment" />
-        <item itemvalue="Docker.camunda-bpm-platform/Dockerfile" />
       </list>
     </recent_temporary>
   </component>
@@ -235,7 +238,7 @@
       <workItem from="1695365694400" duration="3283000" />
       <workItem from="1695369014333" duration="4568000" />
       <workItem from="1695623781235" duration="8841000" />
-      <workItem from="1695708834419" duration="9631000" />
+      <workItem from="1695708834419" duration="14709000" />
     </task>
     <task id="LOCAL-00001" summary="Adding experimenting spring boot app">
       <created>1691764757023</created>
@@ -384,7 +387,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695800376145</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="C7 micro course and external Java worker">
+      <created>1695815861723</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1695815861723</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,7 +430,8 @@
     <MESSAGE value="Docker Camunda experiments" />
     <MESSAGE value="Docker and Camunda" />
     <MESSAGE value="New module for c7 micro course" />
-    <option name="LAST_COMMIT_MESSAGE" value="New module for c7 micro course" />
+    <MESSAGE value="C7 micro course and external Java worker" />
+    <option name="LAST_COMMIT_MESSAGE" value="C7 micro course and external Java worker" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -29,19 +29,23 @@ public class DeductExistingCreditEx7 {
 
         // handle job
         subscriptionBuilder.handler((externalTask, externalTaskService) -> {
-            System.out.println("Handling job !");
             try {
+                LOGGER.info("Handling process instance id : " + externalTask.getProcessInstanceId());
                 Integer amount = externalTask.getVariable("amount");
 
                 Integer credit = Math.toIntExact(Math.round(Math.random() * 1000));
                 Integer balance = credit - amount;
+                System.out.println("Deducting existing credit of " + credit + " € with an amount of " + amount + "€");
 
-                LOGGER.info("Deducting existing credit of " + credit + " € with an amount of " + amount + "€");
+/*                for (int i = 0; i<10; i++) {
+                    Thread.sleep(1000);
+                    System.out.println(10-i);
+                }*/
 
                 Boolean creditSufficient = false;
                 if (balance < 0) {
                     credit = balance;
-                    LOGGER.info("Amount left to be paid: " + balance + "€");
+                    System.out.println("Amount left to be paid: " + balance + "€");
                 } else {
                     creditSufficient = true;
                 }
@@ -60,7 +64,7 @@ public class DeductExistingCreditEx7 {
                 String sStackTrace = sw.toString(); // stack trace as a string
 
                 // report failure and create Camunda incident
-                externalTaskService.handleFailure(externalTask, e.toString(), sStackTrace,0,10000);
+                externalTaskService.handleFailure(externalTask, e.toString(), sStackTrace, 0, 10000);
 /*              void handleFailure(ExternalTask externalTask,
                         String errorMessage,
                         String errorDetails,

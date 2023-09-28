@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bc4d672-731c-4bd7-8182-4cd749b9b306" name="Changes" comment="External Java workers">
-      <change afterPath="$PROJECT_DIR$/c7-worker-deduct-existing-credit/src/main/java/org/camunda/bpm/micro/DeductExistingCreditEx7.java" afterDir="false" />
+    <list default="true" id="0bc4d672-731c-4bd7-8182-4cd749b9b306" name="Changes" comment="Extending external Java worker">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/java/org/camunda/bpm/micro/CamundaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/java/org/camunda/bpm/micro/CamundaApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-worker-deduct-existing-credit/src/main/java/org/camunda/bpm/micro/DeductExistingCreditEx7.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-worker-deduct-existing-credit/src/main/java/org/camunda/bpm/micro/DeductExistingCreditEx7.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +243,7 @@
       <workItem from="1695369014333" duration="4568000" />
       <workItem from="1695623781235" duration="8841000" />
       <workItem from="1695708834419" duration="15357000" />
-      <workItem from="1695881202824" duration="9654000" />
+      <workItem from="1695881202824" duration="13461000" />
     </task>
     <task id="LOCAL-00001" summary="Adding experimenting spring boot app">
       <created>1691764757023</created>
@@ -407,7 +406,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695824482520</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Extending external Java worker">
+      <created>1695910047551</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1695910047551</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,7 +451,8 @@
     <MESSAGE value="New module for c7 micro course" />
     <MESSAGE value="C7 micro course and external Java worker" />
     <MESSAGE value="External Java workers" />
-    <option name="LAST_COMMIT_MESSAGE" value="External Java workers" />
+    <MESSAGE value="Extending external Java worker" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extending external Java worker" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -20,7 +20,6 @@ public class ChargeCardWorkerMicroEx5 {
                     // Put your business logic here
 
                     // Get a process variable
-                    Integer amount = externalTask.getVariable("amount");
                     Integer credit = externalTask.getVariable("credit");
 
                     LOGGER.info("Charging credit card with an amount of '" + -credit + "€");

@@ -39,6 +39,14 @@ public class CamundaApplication {
         variablesB.put("customerId", customerId);
         runtimeService.startProcessInstanceByKey("Process_Order_Handling_Demo", variablesB);
 
+        // starting process instance with variables
+        amount = Math.toIntExact(Math.round(Math.random() * 1000));
+        customerId = Math.toIntExact(Math.round(Math.random() * 1000));
+        Map<String, Object> variablesC = new HashMap<String,Object>();
+        variablesC.put("amount", amount);
+        variablesC.put("customerId", customerId);
+        runtimeService.startProcessInstanceByKey("Process_Payment_Exercise8", variablesC);
+
 /*        for (int i = 0; i<5; i++) {
             runtimeService.startProcessInstanceByKey("SendNotificationProcess", variablesD);
         }*/

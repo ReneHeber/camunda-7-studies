@@ -47,6 +47,14 @@ public class CamundaApplication {
         variablesC.put("customerId", customerId);
         runtimeService.startProcessInstanceByKey("Process_Payment_Exercise8", variablesC);
 
+        // starting process instance with variables
+        Map<String, Object> variablesD = new HashMap<String,Object>();
+        variablesD.put("question", "Does the sun has a shadow?");
+        runtimeService.startProcessInstanceByKey("Process_Question_Extra9C", variablesD);
+
+        // starting process instance
+        runtimeService.startProcessInstanceByKey("Process_Order_Handling_Exercise10");
+
 /*        for (int i = 0; i<5; i++) {
             runtimeService.startProcessInstanceByKey("SendNotificationProcess", variablesD);
         }*/

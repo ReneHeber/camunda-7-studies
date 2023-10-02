@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bc4d672-731c-4bd7-8182-4cd749b9b306" name="Changes" comment="Extending external Java worker">
-      <change afterPath="$PROJECT_DIR$/c7-charge-card-worker-getstarted/src/main/java/org/camunda/bpm/experiments/ChargeCardWorkerMicroEx8.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c7-charge-card-worker-getstarted/src/main/java/org/camunda/bpm/experiments/ChargeCardWorkerMicroEx9.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex8.bpmn" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex9.bpmn" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/static/forms/formCorrectIssue.html" afterDir="false" />
+    <list default="true" id="0bc4d672-731c-4bd7-8182-4cd749b9b306" name="Changes" comment="New external Java workers">
+      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex9b.bpmn" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/static/add-details-ex9c.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/static/start-ex9c.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c7-worker-deduct-existing-credit/src/main/java/org/camunda/bpm/micro/StartPaymentEx10.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/c7-charge-card-worker-getstarted/src/main/java/org/camunda/bpm/experiments/ChargeCardWorkerMicroEx5.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-charge-card-worker-getstarted/src/main/java/org/camunda/bpm/experiments/ChargeCardWorkerMicroEx5.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/java/org/camunda/bpm/micro/CamundaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/java/org/camunda/bpm/micro/CamundaApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex3.bpmn" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex3.bpmn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex5.bpmn" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex5.bpmn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex9.bpmn" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex9.bpmn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/static/forms/formCorrectIssue.html" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/static/formCorrectIssue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-worker-deduct-existing-credit/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/c7-worker-deduct-existing-credit/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,9 +24,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Dockerfile" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -44,50 +44,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/rhe/Documents/Studies/Camunda 7/camunda-7-studies/c7-postgres-db-devops/camunda-bpm-platform&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.31494254&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propGUI&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;89f48cf516033c45ae77b57c12eda268&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "C:/Users/rhe/Documents/Generali/taskana",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.31494254",
+    "settings.editor.selected.configurable": "project.propGUI",
+    "spring.configuration.checksum": "89f48cf516033c45ae77b57c12eda268",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;h2&quot;,
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "h2",
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\rhe\Documents\Studies\Camunda 7\camunda-7-studies\c7-spring-boot-app-micro\src\main\resources\static\forms" />
       <recent name="C:\Users\rhe\Documents\Studies\Camunda 7\camunda-7-studies\c7-postgres-db-devops\camunda-bpm-platform" />
       <recent name="C:\Users\rhe\Documents\Studies\Camunda 7\camunda-7-studies\c7-spring-boot-app-developers-course\src\test\resources" />
       <recent name="C:\Users\rhe\Documents\Studies\Camunda 7\camunda-7-studies\c7-spring-boot-app-developers-course\src\main\resources" />
       <recent name="C:\Users\rhe\Documents\Studies\Camunda 7\camunda-7-studies\c7-spring-boot-app-experiments\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rhe\Documents\Studies\Camunda 7\camunda-7-studies\c7-spring-boot-app-micro\src\main\resources\static" />
+      <recent name="C:\Users\rhe\Documents\Studies\Camunda 7\camunda-7-studies\c7-spring-boot-app-micro\src\main\webapp\forms" />
       <recent name="C:\Users\rhe\Documents\Studies\Camunda 7\camunda-7-studies\c7-spring-boot-app-devops" />
       <recent name="C:\Users\rhe\Documents\Studies\Camunda 7\camunda-7-studies\c7-postgres-db-devops\postgres-camunda-ee" />
       <recent name="C:\Users\rhe\Documents\Studies\Camunda 7\camunda-7-studies\c7-spring-boot-app-developers-course\src\main\resources" />
-      <recent name="C:\Users\rhe\Documents\Studies\Camunda 7\camunda-7-studies" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.camunda.bpm.experiments" />
@@ -96,9 +98,9 @@
       <recent name="org.camunda.bpm.experiments.delegate" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ChargeCardWorkerMicroEx8">
-    <configuration name="ChargeCardWorker" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.experiments.ChargeCardWorker" />
+  <component name="RunManager" selected="Application.ChargeCardWorkerMicroEx5">
+    <configuration name="ChargeCardWorkerMicroEx5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.experiments.ChargeCardWorkerMicroEx5" />
       <module name="c7-charge-card-worker-getstarted" />
       <extension name="coverage">
         <pattern>
@@ -110,8 +112,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ChargeCardWorkerMicroEx8" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.experiments.ChargeCardWorkerMicroEx8" />
+    <configuration name="ChargeCardWorkerMicroEx9" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.experiments.ChargeCardWorkerMicroEx9" />
       <module name="c7-charge-card-worker-getstarted" />
       <extension name="coverage">
         <pattern>
@@ -123,8 +125,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DeductExistingCreditEx5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.micro.DeductExistingCreditEx5" />
+    <configuration name="DeductExistingCreditEx7" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.micro.DeductExistingCreditEx7" />
       <module name="c7-worker-deduct-existing-credit" />
       <extension name="coverage">
         <pattern>
@@ -136,8 +138,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DeductExistingCreditEx7" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.micro.DeductExistingCreditEx7" />
+    <configuration name="StartPaymentEx10" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.micro.StartPaymentEx10" />
       <module name="c7-worker-deduct-existing-credit" />
       <extension name="coverage">
         <pattern>
@@ -210,11 +212,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ChargeCardWorkerMicroEx8" />
+        <item itemvalue="Application.ChargeCardWorkerMicroEx5" />
         <item itemvalue="Application.DeductExistingCreditEx7" />
+        <item itemvalue="Application.StartPaymentEx10" />
         <item itemvalue="Spring Boot.CamundaApplication (4)" />
-        <item itemvalue="Application.DeductExistingCreditEx5" />
-        <item itemvalue="Application.ChargeCardWorker" />
+        <item itemvalue="Application.ChargeCardWorkerMicroEx9" />
       </list>
     </recent_temporary>
   </component>
@@ -252,7 +254,8 @@
       <workItem from="1695623781235" duration="8841000" />
       <workItem from="1695708834419" duration="15357000" />
       <workItem from="1695881202824" duration="13596000" />
-      <workItem from="1695967507658" duration="4275000" />
+      <workItem from="1695967507658" duration="4336000" />
+      <workItem from="1696229012577" duration="15051000" />
     </task>
     <task id="LOCAL-00001" summary="Adding experimenting spring boot app">
       <created>1691764757023</created>
@@ -429,7 +432,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695914809289</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="New external Java workers">
+      <created>1695999360515</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1695999360515</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -468,7 +478,8 @@
     <MESSAGE value="C7 micro course and external Java worker" />
     <MESSAGE value="External Java workers" />
     <MESSAGE value="Extending external Java worker" />
-    <option name="LAST_COMMIT_MESSAGE" value="Extending external Java worker" />
+    <MESSAGE value="New external Java workers" />
+    <option name="LAST_COMMIT_MESSAGE" value="New external Java workers" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

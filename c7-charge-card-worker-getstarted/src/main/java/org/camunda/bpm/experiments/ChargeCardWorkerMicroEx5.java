@@ -18,10 +18,11 @@ public class ChargeCardWorkerMicroEx5 {
                 .lockDuration(1000) // the default lock duration is 20 seconds, but you can override this
                 .handler((externalTask, externalTaskService) -> {
                     // Put your business logic here
+                    LOGGER.info("Handling process instance id : " + externalTask.getProcessInstanceId()
+                            + " with businessKey : " + externalTask.getBusinessKey());
 
                     // Get a process variable
                     Integer credit = externalTask.getVariable("credit");
-
                     LOGGER.info("Charging credit card with an amount of '" + -credit + "€");
 
                     // Complete the task

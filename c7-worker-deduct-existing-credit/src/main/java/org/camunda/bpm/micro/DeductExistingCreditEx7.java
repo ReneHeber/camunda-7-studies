@@ -30,7 +30,8 @@ public class DeductExistingCreditEx7 {
         // handle job
         subscriptionBuilder.handler((externalTask, externalTaskService) -> {
             try {
-                LOGGER.info("Handling process instance id : " + externalTask.getProcessInstanceId());
+                LOGGER.info("Handling process instance id : " + externalTask.getProcessInstanceId()
+                        + " with businessKey : " + externalTask.getBusinessKey());
                 Integer amount = externalTask.getVariable("amount");
 
                 Integer credit = Math.toIntExact(Math.round(Math.random() * 1000));

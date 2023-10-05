@@ -23,12 +23,12 @@
     <bpmn:endEvent id="EndEvent_PaymentCompleted" name="Payment Completed">
       <bpmn:incoming>Flow_1xizbvx</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1v0e26p" sourceRef="Gateway_079wcve" targetRef="Event_043k175" />
+    <bpmn:sequenceFlow id="Flow_1v0e26p" sourceRef="Gateway_079wcve" targetRef="TimerEvent_A" />
     <bpmn:sequenceFlow id="Flow_1iu1bld" name="Yes" sourceRef="Gateway_CreditSufficient" targetRef="Gateway_079wcve">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${creditSufficient}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_1xizbvx" sourceRef="Event_043k175" targetRef="EndEvent_PaymentCompleted" />
-    <bpmn:intermediateCatchEvent id="Event_043k175" name="5 min">
+    <bpmn:sequenceFlow id="Flow_1xizbvx" sourceRef="TimerEvent_A" targetRef="EndEvent_PaymentCompleted" />
+    <bpmn:intermediateCatchEvent id="TimerEvent_A" name="5 min">
       <bpmn:incoming>Flow_1v0e26p</bpmn:incoming>
       <bpmn:outgoing>Flow_1xizbvx</bpmn:outgoing>
       <bpmn:timerEventDefinition id="TimerEventDefinition_0l7mo7v">
@@ -72,10 +72,10 @@ amount (Integer)</bpmn:text>
           <dc:Bounds x="894" y="202" width="54" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1ad6599_di" bpmnElement="Event_043k175">
+      <bpmndi:BPMNShape id="Event_1ad6599_di" bpmnElement="TimerEvent_A">
         <dc:Bounds x="812" y="159" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="817" y="202" width="27" height="14" />
+          <dc:Bounds x="818" y="202" width="27" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_00xw9mv_di" bpmnElement="Task_DeductExistingCredit">

@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bc4d672-731c-4bd7-8182-4cd749b9b306" name="Changes" comment="New external Java workers with REST and message correlations">
-      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/test/java/org/camunda/bpm/micro/ProcessTestPaymentEx5.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/test/resources/camunda.cfg.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/test/resources/logback-test.xml" afterDir="false" />
+    <list default="true" id="0bc4d672-731c-4bd7-8182-4cd749b9b306" name="Changes" comment="Process testing with JUnit">
+      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-order-discount-ex12.dmn" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex11.bpmn" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex12.bpmn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-micro/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex5.bpmn" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex5.bpmn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/java/org/camunda/bpm/micro/CamundaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/java/org/camunda/bpm/micro/CamundaApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +51,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/rhe/Documents/Studies/Camunda 7/camunda-7-studies/c7-spring-boot-app-micro/src/test/resources&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/rhe/Documents/Generali/taskana&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -94,7 +93,7 @@
       <recent name="org.camunda.bpm.experiments.delegate" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ProcessTestPaymentEx5">
+  <component name="RunManager" selected="Spring Boot.CamundaApplication (4)">
     <configuration name="ChargeCardWorkerMicroEx5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.experiments.ChargeCardWorkerMicroEx5" />
       <module name="c7-charge-card-worker-getstarted" />
@@ -110,19 +109,6 @@
     </configuration>
     <configuration name="DeductExistingCreditEx7" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.micro.DeductExistingCreditEx7" />
-      <module name="c7-worker-deduct-existing-credit" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.camunda.bpm.micro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StartPaymentEx10" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.micro.StartPaymentEx10" />
       <module name="c7-worker-deduct-existing-credit" />
       <extension name="coverage">
         <pattern>
@@ -185,6 +171,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CamundaApplication (4)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="c7-spring-boot-app-micro" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.camunda.bpm.micro.CamundaApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.camunda.bpm.micro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CamundaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="c7-spring-boot-application-getstarted" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.camunda.bpm.experiments.CamundaApplication" />
@@ -212,11 +211,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.CamundaApplication (4)" />
         <item itemvalue="JUnit.ProcessTestPaymentEx5" />
         <item itemvalue="JUnit.ProcessTestReviewTweetV4" />
         <item itemvalue="Application.ChargeCardWorkerMicroEx5" />
         <item itemvalue="Application.DeductExistingCreditEx7" />
-        <item itemvalue="Application.StartPaymentEx10" />
       </list>
     </recent_temporary>
   </component>
@@ -257,7 +256,11 @@
       <workItem from="1695967507658" duration="4336000" />
       <workItem from="1696229012577" duration="15711000" />
       <workItem from="1696409789509" duration="2277000" />
-      <workItem from="1696495195912" duration="2268000" />
+      <workItem from="1696495195912" duration="4839000" />
+      <workItem from="1696573334977" duration="3100000" />
+      <workItem from="1696831533639" duration="1199000" />
+      <workItem from="1696918400122" duration="858000" />
+      <workItem from="1697025540836" duration="2004000" />
     </task>
     <task id="LOCAL-00001" summary="Adding experimenting spring boot app">
       <created>1691764757023</created>
@@ -448,7 +451,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696260584722</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Process testing with JUnit">
+      <created>1696497820532</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1696497820532</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -489,7 +499,8 @@
     <MESSAGE value="Extending external Java worker" />
     <MESSAGE value="New external Java workers" />
     <MESSAGE value="New external Java workers with REST and message correlations" />
-    <option name="LAST_COMMIT_MESSAGE" value="New external Java workers with REST and message correlations" />
+    <MESSAGE value="Process testing with JUnit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Process testing with JUnit" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -54,6 +54,20 @@
       </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
     <bpmn:sequenceFlow id="Flow_0isww2z" sourceRef="TimerEvent_A" targetRef="EndEvent_TweetPublished" />
+    <bpmn:subProcess id="Activity_0lf99mp" triggeredByEvent="true">
+      <bpmn:startEvent id="Event_07wmqlw">
+        <bpmn:outgoing>Flow_190pwf4</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:task id="Activity_02do2au">
+        <bpmn:incoming>Flow_190pwf4</bpmn:incoming>
+        <bpmn:outgoing>Flow_0oyymeq</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:sequenceFlow id="Flow_190pwf4" sourceRef="Event_07wmqlw" targetRef="Activity_02do2au" />
+      <bpmn:endEvent id="Event_0q5jq9k">
+        <bpmn:incoming>Flow_0oyymeq</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0oyymeq" sourceRef="Activity_02do2au" targetRef="Event_0q5jq9k" />
+    </bpmn:subProcess>
   </bpmn:process>
   <bpmn:message id="Message_354lo55" name="superuserTweet" />
   <bpmn:message id="Message_33ngmup" name="tweetWithdrawn" />
@@ -104,6 +118,26 @@
           <dc:Bounds x="777" y="152" width="27" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0aqduou_di" bpmnElement="Activity_0lf99mp" isExpanded="true">
+        <dc:Bounds x="170" y="420" width="350" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_07wmqlw_di" bpmnElement="Event_07wmqlw">
+        <dc:Bounds x="210" y="502" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_02do2au_di" bpmnElement="Activity_02do2au">
+        <dc:Bounds x="300" y="480" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0q5jq9k_di" bpmnElement="Event_0q5jq9k">
+        <dc:Bounds x="462" y="502" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_190pwf4_di" bpmnElement="Flow_190pwf4">
+        <di:waypoint x="246" y="520" />
+        <di:waypoint x="300" y="520" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0oyymeq_di" bpmnElement="Flow_0oyymeq">
+        <di:waypoint x="400" y="520" />
+        <di:waypoint x="462" y="520" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0fh8uoe_di" bpmnElement="Flow_0fh8uoe">
         <di:waypoint x="215" y="127" />
         <di:waypoint x="280" y="127" />

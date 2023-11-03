@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.logging.Logger;
 
 public class StartPaymentEx10 {
-    private final static Logger LOGGER = Logger.getLogger(DeductExistingCreditEx7.class.getName());
+    private final static Logger LOGGER = Logger.getLogger(StartPaymentEx10.class.getName());
 
     public static void main(String[] args) {
         System.out.println("Hello start payment worker !");

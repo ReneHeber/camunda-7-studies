@@ -70,25 +70,14 @@ discount (Integer)</bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:association id="Association_1iudw1e" sourceRef="Task_ApplyDiscount" targetRef="TextAnnotation_0lgqmku" />
   </bpmn:process>
+  <bpmn:message id="Message_2lh630b" name="Message_2lh630b" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_Payment_Exercise12">
-      <bpmndi:BPMNShape id="BPMNShape_0pkudec" bpmnElement="TextAnnotation_0lgqmku">
-        <dc:Bounds x="430" y="43" width="122.99645008605853" height="55.07745266781412" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_PaymentRequest">
         <dc:Bounds x="179" y="159" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="154" y="202" width="89" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_0lk5ecc_di" bpmnElement="TextAnnotation_0lk5ecc">
-        <dc:Bounds x="147" y="50" width="122.99577217613275" height="40.8423739629866" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0v0yj4q_di" bpmnElement="Task_DetermineDiscount">
-        <dc:Bounds x="290" y="137" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0u5v6g7_di" bpmnElement="Gateway_CreditSufficient" isMarkerVisible="true">
         <dc:Bounds x="725" y="152" width="50" height="50" />
@@ -117,14 +106,22 @@ discount (Integer)</bpmn:text>
       <bpmndi:BPMNShape id="Activity_12l8lf5_di" bpmnElement="Task_ChargeCreditCard">
         <dc:Bounds x="860" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0v0yj4q_di" bpmnElement="Task_DetermineDiscount">
+        <dc:Bounds x="290" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1l30j2i_di" bpmnElement="Task_ApplyDiscount">
         <dc:Bounds x="430" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Association_1iudw1e_di" bpmnElement="Association_1iudw1e">
-        <di:waypoint x="473" y="137" />
-        <di:waypoint x="466" y="98" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_0lk5ecc_di" bpmnElement="TextAnnotation_0lk5ecc">
+        <dc:Bounds x="147" y="50" width="122.99577217613275" height="40.8423739629866" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0pkudec" bpmnElement="TextAnnotation_0lgqmku">
+        <dc:Bounds x="430" y="43" width="122.99645008605853" height="55.07745266781412" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_0iba4v2_di" bpmnElement="Flow_0iba4v2">
         <di:waypoint x="215" y="177" />
         <di:waypoint x="290" y="177" />
@@ -161,10 +158,6 @@ discount (Integer)</bpmn:text>
         <di:waypoint x="1148" y="177" />
         <di:waypoint x="1202" y="177" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Association_1j7zc71_di" bpmnElement="Association_1j7zc71">
-        <di:waypoint x="197" y="159" />
-        <di:waypoint x="197" y="91" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0bpxxv9_di" bpmnElement="Flow_0bpxxv9">
         <di:waypoint x="390" y="177" />
         <di:waypoint x="430" y="177" />
@@ -172,6 +165,14 @@ discount (Integer)</bpmn:text>
       <bpmndi:BPMNEdge id="Flow_0bqkcg0_di" bpmnElement="Flow_0bqkcg0">
         <di:waypoint x="530" y="177" />
         <di:waypoint x="570" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1j7zc71_di" bpmnElement="Association_1j7zc71">
+        <di:waypoint x="197" y="159" />
+        <di:waypoint x="197" y="91" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1iudw1e_di" bpmnElement="Association_1iudw1e">
+        <di:waypoint x="473" y="137" />
+        <di:waypoint x="466" y="98" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

@@ -92,7 +92,7 @@ public class ProcessTestReviewTweetV4 {
 
     @Test
     public void testTweetRejection() {
-
+        repositoryService().createDeployment();
         EmailService mockEmailService = Mockito.mock(EmailService.class);
         // Define the expected behavior of the service
         Mockito.when(mockEmailService.sendEmail(anyString(), anyString(), anyString())).thenReturn("Mocked Result of EmailService");

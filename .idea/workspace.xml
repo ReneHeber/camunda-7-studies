@@ -4,12 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bc4d672-731c-4bd7-8182-4cd749b9b306" name="Changes" comment="Process testing with JUnit">
-      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-order-discount-ex12.dmn" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex11.bpmn" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex12.bpmn" afterDir="false" />
+    <list default="true" id="0bc4d672-731c-4bd7-8182-4cd749b9b306" name="Changes" comment="Exercise with DMN">
+      <change afterPath="$PROJECT_DIR$/c7-app-message-examples/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c7-app-message-examples/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c7-app-message-examples/src/main/java/org/camunda/bpm/messages/CamundaApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c7-app-message-examples/src/main/resources/META-INF/processes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c7-app-message-examples/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c7-app-message-examples/src/main/resources/c7-order-handling-01.bpmn" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c7-app-message-examples/src/main/resources/c7-payment-01.bpmn" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c7-app-message-examples/src/test/java/org/camunda/bpm/messages/CamundaApplicationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/java/org/camunda/bpm/micro/CamundaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/java/org/camunda/bpm/micro/CamundaApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-charge-card-worker-getstarted/src/main/java/org/camunda/bpm/experiments/ChargeCardWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-charge-card-worker-getstarted/src/main/java/org/camunda/bpm/experiments/ChargeCardWorker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/resources/c7-anti-agile-tweet-v3.bpmn" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/main/resources/c7-anti-agile-tweet-v3.bpmn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/test/java/org/camunda/bpm/developers/CamundaApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/test/java/org/camunda/bpm/developers/CamundaApplicationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/test/java/org/camunda/bpm/developers/ProcessTestReviewTweetV4.java" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-developers-course/src/test/java/org/camunda/bpm/developers/ProcessTestReviewTweetV4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex12.bpmn" beforeDir="false" afterPath="$PROJECT_DIR$/c7-spring-boot-app-micro/src/main/resources/c7-payment-ex12.bpmn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,38 +50,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/rhe/Documents/Generali/taskana&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.31494254&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propGUI&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;89f48cf516033c45ae77b57c12eda268&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "C:/Users/rhe/Documents/Studies/Camunda 7/camunda-7-studies/c7-app-message-examples",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.31494254",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "spring.configuration.checksum": "89f48cf516033c45ae77b57c12eda268",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;h2&quot;,
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "h2",
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\rhe\Documents\Studies\Camunda 7\camunda-7-studies\c7-spring-boot-app-micro\src\test\resources" />
@@ -93,13 +104,13 @@
       <recent name="org.camunda.bpm.experiments.delegate" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.CamundaApplication (4)">
-    <configuration name="ChargeCardWorkerMicroEx5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.experiments.ChargeCardWorkerMicroEx5" />
-      <module name="c7-charge-card-worker-getstarted" />
+  <component name="RunManager" selected="Spring Boot.CamundaApplication (5)">
+    <configuration name="CamundaApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.messages.CamundaApplication" />
+      <module name="c7-app-message-examples" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.camunda.bpm.experiments.*" />
+          <option name="PATTERN" value="org.camunda.bpm.messages.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -107,8 +118,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DeductExistingCreditEx7" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.micro.DeductExistingCreditEx7" />
+    <configuration name="StartPaymentEx10" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.camunda.bpm.micro.StartPaymentEx10" />
       <module name="c7-worker-deduct-existing-credit" />
       <extension name="coverage">
         <pattern>
@@ -184,6 +195,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CamundaApplication (5)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="c7-app-message-examples" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.camunda.bpm.messages.CamundaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CamundaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="c7-spring-boot-application-getstarted" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.camunda.bpm.experiments.CamundaApplication" />
@@ -211,11 +229,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.StartPaymentEx10" />
+        <item itemvalue="Application.CamundaApplication" />
         <item itemvalue="Spring Boot.CamundaApplication (4)" />
         <item itemvalue="JUnit.ProcessTestPaymentEx5" />
         <item itemvalue="JUnit.ProcessTestReviewTweetV4" />
-        <item itemvalue="Application.ChargeCardWorkerMicroEx5" />
-        <item itemvalue="Application.DeductExistingCreditEx7" />
       </list>
     </recent_temporary>
   </component>
@@ -260,7 +278,19 @@
       <workItem from="1696573334977" duration="3100000" />
       <workItem from="1696831533639" duration="1199000" />
       <workItem from="1696918400122" duration="858000" />
-      <workItem from="1697025540836" duration="2004000" />
+      <workItem from="1697025540836" duration="2279000" />
+      <workItem from="1697096353710" duration="2675000" />
+      <workItem from="1697177226373" duration="2756000" />
+      <workItem from="1697626892415" duration="625000" />
+      <workItem from="1697794350393" duration="1199000" />
+      <workItem from="1698051944577" duration="1657000" />
+      <workItem from="1698135775960" duration="3272000" />
+      <workItem from="1698227317625" duration="766000" />
+      <workItem from="1698312365520" duration="912000" />
+      <workItem from="1698407623328" duration="619000" />
+      <workItem from="1698744849842" duration="1274000" />
+      <workItem from="1698928194222" duration="2298000" />
+      <workItem from="1699004388919" duration="2496000" />
     </task>
     <task id="LOCAL-00001" summary="Adding experimenting spring boot app">
       <created>1691764757023</created>
@@ -458,7 +488,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696497820532</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Exercise with DMN">
+      <created>1697038663419</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1697038663419</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -500,7 +537,8 @@
     <MESSAGE value="New external Java workers" />
     <MESSAGE value="New external Java workers with REST and message correlations" />
     <MESSAGE value="Process testing with JUnit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Process testing with JUnit" />
+    <MESSAGE value="Exercise with DMN" />
+    <option name="LAST_COMMIT_MESSAGE" value="Exercise with DMN" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

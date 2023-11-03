@@ -2,8 +2,6 @@ package org.camunda.bpm.experiments;
 
 import org.camunda.bpm.client.ExternalTaskClient;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Logger;
 
 public class ChargeCardWorker {
@@ -19,8 +17,6 @@ public class ChargeCardWorker {
         client.subscribe("charge-card")
                 .lockDuration(1000) // the default lock duration is 20 seconds, but you can override this
                 .handler((externalTask, externalTaskService) -> {
-                    // Put your business logic here
-
                     // Get a process variable
                     String item = externalTask.getVariable("item");
                     Integer amount = externalTask.getVariable("amount");
